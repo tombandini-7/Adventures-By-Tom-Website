@@ -1,0 +1,366 @@
+/* Google Fonts Import - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/*
+ * ===========================================
+ * DESIGN NOTES - Adventures by Tom Website
+ * ===========================================
+ *
+ * KEY DESIGN DECISIONS:
+ *
+ * 1. CTA Buttons: Always use WHITE text on magenta/aqua backgrounds
+ *    - Primary CTA: bg-magenta with white text
+ *    - Secondary CTA: bg-aqua with white text
+ *
+ * 2. Navigation: White text with yellow hover state
+ *    - Nav links: text-white hover:text-yellow
+ *    - Mobile menu follows same pattern
+ *
+ * 3. External Quote Form: https://tinyurl.com/advbytom
+ *    - All "Get a Free Quote" buttons link to this URL
+ *    - Opens in new tab with target="_blank"
+ *    - No internal contact form (outsourced)
+ *
+ * 4. Hero Section: Strong gradient overlay for text readability
+ *    - Overlay: from-ocean-dark/90 via-ocean/80 to-ocean-dark/90
+ *    - Main text: white with drop-shadow
+ *    - Accent word "Magic": yellow italic
+ *
+ * 5. Color Palette:
+ *    - Primary: Bright Aqua (#00B4D8), Vivid Magenta (#E63946)
+ *    - Secondary: Crisp White (#FFFFFF), Light Sky Blue (#CAF0F8)
+ *    - Accent: Sunny Yellow (#FFD60A), Deep Ocean Blue (#023E8A)
+ *
+ * 6. Typography:
+ *    - Headings: Cormorant Garamond (serif)
+ *    - Body: Inter (sans-serif)
+ *
+ * 8. Icons:
+ *    - Never use background colors behind icons
+ *    - Show icons directly without circular/rounded backgrounds
+ *    - Use color directly on the icon itself
+ *
+ * 7. Assets:
+ *    - Logo (white): https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png
+ *    - Tom's photo: https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Tom.JPG
+ *      (Use object-top to prevent head cropping)
+ *
+ * ===========================================
+ */
+
+/* Custom Theme Configuration for Tailwind v4 */
+@theme {
+  /* Primary Colors */
+  --color-aqua: #00B4D8;
+  --color-aqua-light: #48CAE4;
+  --color-aqua-dark: #0096B4;
+  --color-magenta: #E63946;
+  --color-magenta-light: #EF5A67;
+  --color-magenta-dark: #C42D39;
+
+  /* Secondary Colors */
+  --color-white: #FFFFFF;
+  --color-sky: #CAF0F8;
+  --color-sky-light: #E0F7FB;
+  --color-sky-dark: #90E0EF;
+
+  /* Accent Colors */
+  --color-yellow: #FFD60A;
+  --color-yellow-light: #FFE246;
+  --color-yellow-dark: #E6C009;
+  --color-ocean: #023E8A;
+  --color-ocean-light: #0353A4;
+  --color-ocean-dark: #012A5E;
+
+  /* Neutral Colors */
+  --color-gray-50: #F8FAFC;
+  --color-gray-100: #F1F5F9;
+  --color-gray-200: #E2E8F0;
+  --color-gray-300: #CBD5E1;
+  --color-gray-400: #94A3B8;
+  --color-gray-500: #64748B;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1E293B;
+  --color-gray-900: #0F172A;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Custom spacing */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+
+  /* Custom animations */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-fade-in-down: fade-in-down 0.6s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-shimmer: shimmer 2s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Keyframe Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-white);
+  color: var(--color-gray-800);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-ocean);
+}
+
+/* Primary Button Style */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-aqua);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-aqua-dark);
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button Style (Outline) */
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: var(--color-ocean);
+  transform: translateY(-2px);
+}
+
+/* Aqua background uses outline style for secondary CTAs */
+.bg-aqua.btn-outline,
+.btn-outline {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.bg-aqua.btn-outline:hover,
+.btn-outline:hover {
+  background-color: white;
+  color: var(--color-ocean);
+}
+
+/* Navigation links always white */
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: var(--color-yellow);
+}
+
+/* Magenta background always uses white text */
+.bg-magenta,
+.bg-magenta-light,
+.bg-magenta-dark {
+  color: white;
+}
+
+.bg-magenta a,
+.bg-magenta-light a,
+.bg-magenta-dark a {
+  color: white;
+}
+
+.bg-magenta a:hover,
+.bg-magenta-light a:hover,
+.bg-magenta-dark a:hover {
+  color: var(--color-yellow);
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(2, 62, 138, 0.15);
+}
+
+/* Parallax Container */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Scroll Animation Utilities */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Selection Colors */
+::selection {
+  background-color: var(--color-aqua);
+  color: white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-sky-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ocean);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ocean-light);
+}
+
+/* Focus Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-aqua);
+  outline-offset: 2px;
+}
+
+/* Link Styles */
+a {
+  color: var(--color-aqua-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-aqua);
+}
+
+/* Outline button style - white text, changes to ocean on hover */
+a.btn-outline,
+.btn-outline {
+  color: white !important;
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+a.btn-outline:hover,
+.btn-outline:hover {
+  color: var(--color-ocean) !important;
+  background-color: white;
+}
