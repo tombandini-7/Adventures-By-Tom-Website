@@ -11,9 +11,14 @@ npm run lint      # Run ESLint
 npm run preview   # Preview production build locally
 ```
 
-## Architecture
+### Tech Stack
 
-React 19 + TypeScript + Vite SPA for a boutique travel advisor (Disney destinations, cruises). Single-page marketing site with no routing or external API calls.
+- **Framework:**
+React 19 + TypeScript + Vite SPA for a boutique travel advisor (Disney destinations, cruises).
+- **Language:**
+- **Database:**
+- **Other:**
+Single-page marketing site with no routing or external API calls.
 
 ### Key Directories
 
