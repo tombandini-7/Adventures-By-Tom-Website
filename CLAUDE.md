@@ -2,14 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Build Commands
+### About This Project
 
-```bash
-npm run dev       # Start Vite dev server with HMR
-npm run build     # TypeScript check + Vite production build
-npm run lint      # Run ESLint
-npm run preview   # Preview production build locally
-```
+This project is a website for my Travel Agency, to highlight what I have to offer to clients, how clients can request a quote, and testamonials from past and current clients as I have helped them plan a vacation.
 
 ### Tech Stack
 
@@ -28,32 +23,16 @@ tests/        → Test files
 config/       → Configuration
 docs/         → Documentation
 ```
-
-### Component Structure
-
-```
-App.tsx
-├── Header      # Fixed nav, mobile hamburger menu, logo
-├── Hero        # Full-screen parallax, main CTA
-├── Destinations # 3-card grid (Disney World, Cruise Line, Aulani)
-├── About       # Tom's profile, 4 feature benefit cards
-├── Testimonials # 4 reviews in 2x2 grid
-├── Contact     # 3 contact cards, CTA
-└── Footer      # 4-column layout, social links
-```
-
-### Commands
+### Build Commands
 
 ```bash
-# Development
-npm run dev
-
-# Testing
-npm test
-
-# Build
-npm run build
+npm run dev       # Start Vite dev server with HMR
+npm run build     # TypeScript check + Vite production build
+npm run lint      # Run ESLint
+npm run preview   # Preview production build locally
+npm test          # Testing
 ```
+
 
 ### Code Style
 ```tsx
@@ -65,7 +44,6 @@ export const fetchUser = async (id: string): Promise<User> => {
 // ❌ Bad: Default exports, implicit any
 export default function(id) { ... }
 ```
-
 ### Workflow
 
 1. Create feature branch from `main`
@@ -95,6 +73,21 @@ export default function(id) { ... }
 ### Known Gotchas
 
 *Add lessons learned here as you encounter them*
+
+
+### Component Structure
+
+```
+App.tsx
+├── Header      # Fixed nav, mobile hamburger menu, logo
+├── Hero        # Full-screen parallax, main CTA
+├── Destinations # 3-card grid (Disney World, Cruise Line, Aulani)
+├── About       # Tom's profile, 4 feature benefit cards
+├── Testimonials # 4 reviews in 2x2 grid
+├── Contact     # 3 contact cards, CTA
+└── Footer      # 4-column layout, social links
+```
+
 
 ### Custom Hooks
 
