@@ -1,12 +1,14 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { Castle, Ship, Palmtree, MapPin, ArrowRight } from 'lucide-react';
+import { Castle, Ship, Palmtree, Sparkles, Anchor, Globe, MapPin, ArrowRight } from 'lucide-react';
+import { ASSETS } from '../constants/assets';
 
 interface DestinationCardProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   description: string;
   features: string[];
   image: string;
+  imagePosition?: string;
   delay: number;
 }
 
@@ -16,6 +18,7 @@ const DestinationCard = ({
   description,
   features,
   image,
+  imagePosition = 'center',
   delay,
 }: DestinationCardProps) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -29,28 +32,32 @@ const DestinationCard = ({
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Image */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-48 lg:h-52 overflow-hidden">
         <img
           src={image}
           alt={title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          style={{ objectPosition: imagePosition }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ocean/60 to-transparent" />
-        <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-aqua flex items-center justify-center text-white">
-          {icon}
-        </div>
+        {icon && (
+          <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-aqua flex items-center justify-center text-white">
+            {icon}
+          </div>
+        )}
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="font-serif text-2xl text-ocean mb-3">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4 leading-relaxed">{description}</p>
+      <div className="p-5">
+        <h3 className="font-serif text-xl lg:text-2xl text-ocean mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">{description}</p>
 
         {/* Features */}
-        <ul className="space-y-2 mb-6">
+        <ul className="space-y-1.5 mb-4">
           {features.map((feature) => (
             <li key={feature} className="flex items-center gap-2 text-sm text-gray-500">
-              <MapPin className="w-4 h-4 text-magenta" />
+              <MapPin className="w-3.5 h-3.5 text-magenta flex-shrink-0" />
               {feature}
             </li>
           ))}
@@ -77,25 +84,72 @@ const Destinations = () => {
       icon: <Castle className="w-6 h-6" />,
       title: 'Walt Disney World',
       description:
-        'Experience the magic of four incredible theme parks, two water parks, and world-class resorts in Orlando, Florida.',
-      features: ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', "Animal Kingdom"],
-      image: 'https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=1964',
+        'Experience the magic of four incredible theme parks, two water parks, and world-class resorts in Orlando.',
+      features: ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', 'Animal Kingdom'],
+      image: ASSETS.destinations.waltDisneyWorld,
+    },
+    {
+      icon: <Sparkles className="w-6 h-6" />,
+      title: 'Disneyland Resort',
+      description:
+        'Where the Disney magic began. Explore two amazing parks in the heart of Southern California.',
+      features: ['Disneyland Park', 'California Adventure', 'Downtown Disney', 'Disney Hotels'],
+      image: ASSETS.destinations.disneyland,
     },
     {
       icon: <Ship className="w-6 h-6" />,
       title: 'Disney Cruise Line',
       description:
-        'Set sail on an unforgettable voyage where legendary Disney entertainment meets the relaxation of a luxury cruise.',
-      features: ['Caribbean Voyages', 'Mediterranean Cruises', 'Alaska Adventures', 'Private Island'],
-      image: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2064',
+        'Set sail on an unforgettable voyage where legendary Disney entertainment meets luxury cruising.',
+      features: ['Caribbean Voyages', 'Mediterranean', 'Alaska Adventures', 'Private Island'],
+      image: ASSETS.cruises.disneyCruiseLine,
     },
     {
       icon: <Palmtree className="w-6 h-6" />,
       title: 'Aulani Resort',
       description:
-        "Discover Hawaiian paradise at Disney's stunning beachfront resort, where relaxation meets adventure.",
+        "Discover Hawaiian paradise at Disney's stunning beachfront resort in Ko Olina, Oahu.",
       features: ['Ko Olina Beach', 'Spa Services', 'Cultural Experiences', 'Character Dining'],
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073',
+      image: ASSETS.destinations.aulani,
+    },
+    {
+      title: 'Adventures by Disney',
+      description:
+        'Guided group vacations to extraordinary destinations around the world with Disney magic.',
+      features: ['European Tours', 'African Safaris', 'South America', 'Family Expeditions'],
+      image: ASSETS.destinations.adventuresByDisney,
+      imagePosition: 'left center',
+    },
+    {
+      icon: <Anchor className="w-6 h-6" />,
+      title: 'Royal Caribbean',
+      description:
+        "Bold adventures on the world's most innovative cruise ships with something for everyone.",
+      features: ['Caribbean Islands', 'Perfect Day CocoCay', 'Mediterranean', 'Alaska'],
+      image: ASSETS.cruises.royalCaribbean,
+    },
+    {
+      icon: <Ship className="w-6 h-6" />,
+      title: 'Virgin Voyages',
+      description:
+        'Adults-only cruising reimagined with unique experiences and premium amenities.',
+      features: ['Adults-Only', 'All-Inclusive Dining', 'Beach Club Access', 'Wellness Focus'],
+      image: ASSETS.cruises.virginVoyages,
+    },
+    {
+      title: 'Hotels & Resorts',
+      description:
+        'Premium hotel stays to complement your vacation or as standalone luxury getaways.',
+      features: ['Luxury Resorts', 'Beach Properties', 'City Hotels', 'All-Inclusive'],
+      image: ASSETS.destinations.hotels,
+    },
+    {
+      icon: <Globe className="w-6 h-6" />,
+      title: 'European Vacations',
+      description:
+        "Explore the rich history, culture, and beauty of Europe's greatest destinations.",
+      features: ['City Tours', 'River Cruises', 'Cultural Experiences', 'Custom Itineraries'],
+      image: ASSETS.destinations.europe,
     },
   ];
 
@@ -122,23 +176,20 @@ const Destinations = () => {
         </div>
 
         {/* Destination Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
           {destinations.map((destination, index) => (
             <DestinationCard
               key={destination.title}
               {...destination}
-              delay={index * 150}
+              delay={index * 100}
             />
           ))}
         </div>
 
-        {/* Additional Services */}
+        {/* CTA */}
         <div className="mt-16 text-center">
           <p className="text-gray-600 mb-6">
-            Also specializing in:{' '}
-            <span className="text-aqua font-medium">Adventures by Disney</span>,{' '}
-            <span className="text-aqua font-medium">Disneyland Resort</span>,{' '}
-            <span className="text-aqua font-medium">Universal Studios</span>, and more.
+            Don't see what you're looking for? We can help plan any vacation destination.
           </p>
           <a
             href="#contact"

@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLogoAnimation } from '../hooks/useScrollAnimation';
 
 const LOGO_URL = 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png';
 const QUOTE_URL = 'https://tinyurl.com/advbytom';
+const BANNER_HEIGHT = 44; // Height of the promo banner in pixels
 
-const Header = () => {
+interface HeaderProps {
+  hasBanner?: boolean;
+}
+
+const Header = ({ hasBanner = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scale } = useLogoAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,34 +24,46 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // When mobile menu is open, keep logo at normal size
+  const logoScale = isMobileMenuOpen ? 1 : scale;
+
   const navLinks = [
     { name: 'Home', href: '#home' },
+    { name: 'Promotions', href: '#promotions' },
     { name: 'Destinations', href: '#destinations' },
     { name: 'About', href: '#about' },
     { name: 'Testimonials', href: '#testimonials' },
   ];
 
+  const headerTop = hasBanner ? BANNER_HEIGHT : 0;
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
           ? 'bg-ocean/95 backdrop-blur-md shadow-lg py-3'
-          : 'bg-ocean/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-5'
+          : 'bg-transparent py-3 lg:py-5'
       }`}
+      style={{ top: `${headerTop}px` }}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#home"
-            className="flex items-center hover:opacity-80 transition-opacity"
-          >
-            <img
-              src={LOGO_URL}
-              alt="Adventures by Tom"
-              className="h-12 md:h-14 w-auto"
-            />
-          </a>
+          {/* Logo container with fixed height to prevent layout shift */}
+          <div className="relative h-12 md:h-14" style={{ width: `${150 * logoScale}px` }}>
+            <a
+              href="#home"
+              className="absolute top-0 left-0 flex items-center hover:opacity-80 transition-opacity origin-top-left logo-animated"
+              style={{
+                transform: `scale(${logoScale})`,
+              }}
+            >
+              <img
+                src={LOGO_URL}
+                alt="Adventures by Tom"
+                className="h-12 md:h-14 w-auto"
+              />
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">

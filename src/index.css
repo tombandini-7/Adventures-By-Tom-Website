@@ -200,7 +200,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: var(--color-ocean);
+  /* Color controlled by components via Tailwind classes */
 }
 
 /* Primary Button Style */
@@ -310,6 +310,43 @@ nav a:hover {
   transform: translateY(0);
 }
 
+/* Logo Animation Optimization */
+.logo-animated {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Carousel Styles */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-gray-300);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+  background-color: var(--color-gray-400);
+}
+
+.carousel-dot.active {
+  background-color: var(--color-magenta);
+  transform: scale(1.2);
+}
+
 /* Selection Colors */
 ::selection {
   background-color: var(--color-aqua);
@@ -340,14 +377,19 @@ nav a:hover {
   outline-offset: 2px;
 }
 
-/* Link Styles */
+/* Link Styles - Scoped to content sections only */
+/* Base link reset */
 a {
-  color: var(--color-aqua-dark);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:hover {
+/* Aqua links only in main content areas (not header/footer/nav) */
+main a:not(.btn-primary):not(.btn-secondary):not(.btn-outline):not([class*="bg-"]) {
+  color: var(--color-aqua-dark);
+}
+
+main a:not(.btn-primary):not(.btn-secondary):not(.btn-outline):not([class*="bg-"]):hover {
   color: var(--color-aqua);
 }
 
@@ -363,4 +405,56 @@ a.btn-outline:hover,
 .btn-outline:hover {
   color: var(--color-ocean) !important;
   background-color: white;
+}
+
+/* Promotion Modal Content Styles */
+.promotion-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-ocean);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.promotion-content h2:first-child {
+  margin-top: 0;
+}
+
+.promotion-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-ocean-light);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.promotion-content p {
+  color: var(--color-gray-700);
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.promotion-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-700);
+}
+
+.promotion-content ul li {
+  margin-bottom: 0.375rem;
+  line-height: 1.6;
+}
+
+.promotion-content strong {
+  font-weight: 600;
+  color: var(--color-gray-800);
+}
+
+.promotion-content em {
+  font-style: italic;
 }

@@ -79,13 +79,15 @@ export default function(id) { ... }
 
 ```
 App.tsx
-├── Header      # Fixed nav, mobile hamburger menu, logo
-├── Hero        # Full-screen parallax, main CTA
-├── Destinations # 3-card grid (Disney World, Cruise Line, Aulani)
-├── About       # Tom's profile, 4 feature benefit cards
-├── Testimonials # 4 reviews in 2x2 grid
-├── Contact     # 3 contact cards, CTA
-└── Footer      # 4-column layout, social links
+├── PromoBanner   # Dismissible top banner for time-sensitive offers
+├── Header        # Fixed nav, mobile hamburger menu, logo (shifts with banner)
+├── Hero          # Full-screen parallax, main CTA
+├── Promotions    # Auto-rotating carousel with destination images, modal details
+├── Destinations  # 9-card grid (4 columns on xl) - Disney, cruises, hotels, etc.
+├── About         # Tom's profile, 4 feature benefit cards
+├── Testimonials  # 4 reviews in 2x2 grid
+├── Contact       # 3 contact cards, CTA
+└── Footer        # 4-column layout, social links
 ```
 
 
@@ -116,9 +118,9 @@ App.tsx
 ## External Dependencies
 
 - **Quote Form:** All "Get a Free Quote" CTAs link to `https://tinyurl.com/advbytom` (opens in new tab)
-- **Assets hosted on Supabase CDN:**
-  - Logo: `https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png`
-  - Tom's photo: `https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Tom.JPG`
+- **Assets:** Centralized in `src/constants/assets.ts` - use `ASSETS` object or `getDestinationImage()` helper
+  - Logos, team photos, cruise lines, theme parks, destinations
+  - All hosted on Supabase CDN
 
 ## Contact Info
 
