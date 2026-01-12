@@ -24,6 +24,7 @@ const Footer = () => {
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
     { name: 'Get a Quote', href: QUOTE_URL, external: true },
+    { name: 'Magical Park Vacations', href: 'https://magicalparkvacations.com', external: true },
   ];
 
   const destinations = [
@@ -43,10 +44,15 @@ const Footer = () => {
         <div className="lg:hidden">
           {/* Logo & Tagline - Centered */}
           <div className="text-center mb-10">
-            <a href="#home" className="inline-block hover:opacity-80 transition-opacity mb-4">
+            <a
+              href="https://magicalparkvacations.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-80 transition-opacity mb-4"
+            >
               <img
-                src={ASSETS.logos.white}
-                alt="Adventures by Tom"
+                src={ASSETS.logos.affiliatedWithMPV}
+                alt="Affiliated with Magical Park Vacations"
                 className="h-50 w-auto mx-auto"
               />
             </a>
@@ -156,10 +162,15 @@ const Footer = () => {
         <div className="hidden lg:grid lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <a href="#home" className="block hover:opacity-80 transition-opacity">
+            <a
+              href="https://magicalparkvacations.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:opacity-80 transition-opacity"
+            >
               <img
-                src={ASSETS.logos.white}
-                alt="Adventures by Tom"
+                src={ASSETS.logos.affiliatedWithMPV}
+                alt="Affiliated with Magical Park Vacations"
                 className="h-50 w-auto"
               />
             </a>

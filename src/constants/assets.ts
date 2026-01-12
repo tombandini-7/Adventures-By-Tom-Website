@@ -4,6 +4,7 @@ export const ASSETS = {
   // Logos
   logos: {
     white: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Agency/ABT%20White.png',
+    affiliatedWithMPV: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Agency/Affiliated%20with%20MPV.png',
   },
 
   // Team Photos
