@@ -19,7 +19,7 @@ const WDWHero = () => {
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ocean/60 via-ocean/40 to-ocean/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ocean-dark/50 via-ocean/40 to-ocean-dark/50" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">

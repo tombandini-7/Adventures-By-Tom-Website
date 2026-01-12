@@ -18,10 +18,19 @@ Multi-page marketing site using react-router-dom for client-side routing. No ext
 ### Key Directories
 
 ```
-src/          → Application code
-tests/        → Test files
-config/       → Configuration
-docs/         → Documentation
+src/
+├── components/       → React components (Header, Hero, Footer, etc.)
+├── constants/        → Shared constants
+│   └── assets.ts     → Centralized asset URLs (ASSETS object)
+├── hooks/            → Custom React hooks
+│   ├── useScrollAnimation.ts
+│   └── useParallax.ts
+├── pages/            → Route-based page components
+├── App.tsx           → Main app with routing
+└── index.css         → Global styles, Tailwind config, design system
+tests/                → Test files
+config/               → Configuration
+docs/                 → Documentation
 ```
 ### Build Commands
 
@@ -97,22 +106,67 @@ App.tsx
 
 ## Design System (from `src/index.css`)
 
-**Colors:**
-- Primary: Aqua (#00B4D8), Magenta (#E63946)
-- Accent: Yellow (#FFD60A), Ocean Blue (#023E8A), Sky (#CAF0F8)
+### Colors
 
-**Typography:**
-- Headings: Montserrat (sans-serif)
-- Body: Inter (sans-serif)
+| Category | Name | Hex | Tailwind Class |
+|----------|------|-----|----------------|
+| Primary | Aqua | #00B4D8 | `bg-aqua`, `text-aqua` |
+| Primary | Aqua Light | #48CAE4 | `bg-aqua-light` |
+| Primary | Aqua Dark | #0096B4 | `bg-aqua-dark` |
+| Primary | Magenta | #E63946 | `bg-magenta`, `text-magenta` |
+| Primary | Magenta Light | #EF5A67 | `bg-magenta-light` |
+| Primary | Magenta Dark | #C42D39 | `bg-magenta-dark` |
+| Secondary | Sky | #CAF0F8 | `bg-sky` |
+| Secondary | Sky Light | #E0F7FB | `bg-sky-light` |
+| Secondary | Sky Dark | #90E0EF | `bg-sky-dark` |
+| Accent | Yellow | #FFD60A | `text-yellow`, `hover:text-yellow` |
+| Accent | Ocean | #023E8A | `bg-ocean`, `text-ocean` |
+| Accent | Ocean Light | #0353A4 | `bg-ocean-light` |
+| Accent | Ocean Dark | #012A5E | `bg-ocean-dark` |
 
-**Key Design Rules:**
-1. CTA buttons: WHITE text on magenta/aqua backgrounds
-2. Navigation: White text, yellow hover state
-3. Icons: Direct color on icons - never use background circles/shapes behind icons
-4. Hero overlay: Strong dark gradient for text readability
-5. Tom's photo: Use `object-top` to prevent head cropping
+### Typography
 
-**Button Classes:** `.btn-primary`, `.btn-secondary`, `.btn-outline`
+- **Headings:** Montserrat → `font-serif` (configured in Tailwind)
+- **Body:** Inter → `font-sans`
+
+### Gradients
+
+Four primary gradients for consistent design:
+
+| Gradient | Use Cases | CSS Class | Tailwind |
+|----------|-----------|-----------|----------|
+| Ocean Flow | Hero sections, headers, navigation | `.gradient-ocean-flow` | `bg-gradient-to-br from-ocean via-ocean-light to-aqua-dark` |
+| Warm CTA | Buttons, banners, promotional highlights | `.gradient-warm-cta` | `bg-gradient-to-br from-magenta-dark via-magenta to-magenta-light` |
+| Sky Wash | Content cards, feature sections, light backgrounds | `.gradient-sky-wash` | `bg-gradient-to-b from-white to-sky` |
+| Vibrant Blend | Card headers, accent sections | `.gradient-vibrant-blend` | `bg-gradient-to-r from-magenta to-ocean` |
+
+### Button Classes
+
+| Class | Use | Behavior |
+|-------|-----|----------|
+| `.btn-primary` | Primary actions | Aqua bg, white text, lifts on hover |
+| `.btn-secondary` | Secondary actions (on dark bg) | Transparent, white border, fills white on hover |
+| `.btn-outline` | Outline style (on dark bg) | Same as btn-secondary |
+
+### Key Design Rules
+
+1. **CTA buttons:** Always WHITE text on magenta/aqua backgrounds (enforced in CSS)
+2. **Navigation:** White text, yellow hover state
+3. **Icons:** Direct color on icons - never use background circles/shapes behind icons (exception: timeline nodes where backgrounds provide visual continuity)
+4. **Hero overlay:** Use `from-ocean-dark/50 via-ocean/40 to-ocean-dark/50` for text readability
+5. **Tom's photo:** Use `object-top` to prevent head cropping
+6. **Accent words:** Use `text-yellow italic` for highlighted text on dark backgrounds
+
+### Reusable CSS Utilities
+
+Located in `src/index.css`:
+
+- `.card-hover` - Lift effect on hover with shadow
+- `.animate-on-scroll` + `.visible` - Scroll-triggered fade-in
+- `.parallax-bg` - Fixed background parallax effect
+- `.carousel-track`, `.carousel-slide`, `.carousel-dot` - Carousel components
+- `.promotion-content` - Styled markdown content for promotion modals
+- `.logo-animated` - Optimized logo animations
 
 ## External Dependencies
 

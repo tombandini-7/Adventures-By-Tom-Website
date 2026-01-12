@@ -23,26 +23,41 @@
  *    - Opens in new tab with target="_blank"
  *    - No internal contact form (outsourced)
  *
- * 4. Hero Section: Strong gradient overlay for text readability
- *    - Overlay: from-ocean-dark/90 via-ocean/80 to-ocean-dark/90
+ * 4. Hero Section: Gradient overlay for text readability
+ *    - Overlay: from-ocean-dark/50 via-ocean/40 to-ocean-dark/50
  *    - Main text: white with drop-shadow
  *    - Accent word "Magic": yellow italic
  *
  * 5. Color Palette:
- *    - Primary: Bright Aqua (#00B4D8), Vivid Magenta (#E63946)
- *    - Secondary: Crisp White (#FFFFFF), Light Sky Blue (#CAF0F8)
- *    - Accent: Sunny Yellow (#FFD60A), Deep Ocean Blue (#023E8A)
+ *    - Primary: Aqua (#00B4D8), Magenta (#E63946)
+ *      - Light/Dark variants available (e.g., aqua-light, aqua-dark)
+ *    - Secondary: White (#FFFFFF), Sky (#CAF0F8)
+ *    - Accent: Yellow (#FFD60A), Ocean (#023E8A)
  *
  * 6. Typography:
- *    - Headings: Montserrat (sans-serif)
- *    - Body: Inter (sans-serif)
+ *    - Headings: Montserrat (font-serif in Tailwind)
+ *    - Body: Inter (font-sans in Tailwind)
+ *
+ * 7. Gradients (see GRADIENT UTILITIES section below):
+ *    - Ocean Flow: Hero sections, headers, navigation
+ *      CSS: .gradient-ocean-flow
+ *      Tailwind: bg-gradient-to-br from-ocean via-ocean-light to-aqua-dark
+ *    - Warm CTA: Buttons, banners, promotional highlights
+ *      CSS: .gradient-warm-cta
+ *      Tailwind: bg-gradient-to-br from-magenta-dark via-magenta to-magenta-light
+ *    - Sky Wash: Content cards, feature sections, light backgrounds
+ *      CSS: .gradient-sky-wash
+ *      Tailwind: bg-gradient-to-b from-white to-sky
+ *    - Vibrant Blend: Card headers, accent sections blending primary colors
+ *      CSS: .gradient-vibrant-blend
+ *      Tailwind: bg-gradient-to-r from-magenta to-ocean
  *
  * 8. Icons:
  *    - Never use background colors behind icons
  *    - Show icons directly without circular/rounded backgrounds
  *    - Use color directly on the icon itself
  *
- * 7. Assets:
+ * 9. Assets:
  *    - All assets centralized in src/constants/assets.ts (use ASSETS object)
  *    - Logo (white): ASSETS.logos.white
  *    - Tom's photo: ASSETS.team.tom (use object-top to prevent head cropping)
@@ -272,6 +287,72 @@ nav a:hover {
 .bg-magenta-light a:hover,
 .bg-magenta-dark a:hover {
   color: var(--color-yellow);
+}
+
+/* Aqua background always uses white text */
+.bg-aqua,
+.bg-aqua-light,
+.bg-aqua-dark {
+  color: white;
+}
+
+.bg-aqua a,
+.bg-aqua-light a,
+.bg-aqua-dark a {
+  color: white;
+}
+
+.bg-aqua a:hover,
+.bg-aqua-light a:hover,
+.bg-aqua-dark a:hover {
+  color: var(--color-yellow);
+}
+
+/* =========================================
+ * GRADIENT UTILITIES
+ * =========================================
+ *
+ * Four primary gradients for consistent design:
+ *
+ * 1. Ocean Flow - Hero sections, headers, navigation, primary backgrounds
+ *    Tailwind: bg-gradient-to-br from-ocean via-ocean-light to-aqua-dark
+ *    CSS class: .gradient-ocean-flow
+ *
+ * 2. Warm CTA - Call-to-action buttons, promotional banners, highlights
+ *    Tailwind: bg-gradient-to-br from-magenta-dark via-magenta to-magenta-light
+ *    CSS class: .gradient-warm-cta
+ *
+ * 3. Sky Wash - Content cards, light backgrounds, feature sections
+ *    Tailwind: bg-gradient-to-b from-white to-sky
+ *    CSS class: .gradient-sky-wash
+ *
+ * 4. Vibrant Blend - Card headers, accent sections blending primary colors
+ *    Tailwind: bg-gradient-to-r from-magenta to-ocean
+ *    CSS class: .gradient-vibrant-blend
+ *
+ * ========================================= */
+
+/* Ocean Flow Gradient - Deep blues transitioning to aqua */
+.gradient-ocean-flow {
+  background: linear-gradient(135deg, var(--color-ocean), var(--color-ocean-light), var(--color-aqua-dark));
+  color: white;
+}
+
+/* Warm CTA Gradient - Magenta tones for action elements */
+.gradient-warm-cta {
+  background: linear-gradient(135deg, var(--color-magenta-dark), var(--color-magenta), var(--color-magenta-light));
+  color: white;
+}
+
+/* Sky Wash Gradient - Subtle light gradient for content areas */
+.gradient-sky-wash {
+  background: linear-gradient(180deg, var(--color-white), var(--color-sky));
+}
+
+/* Vibrant Blend Gradient - Card headers blending primary colors */
+.gradient-vibrant-blend {
+  background: linear-gradient(to right, var(--color-magenta), var(--color-ocean));
+  color: white;
 }
 
 /* Card Hover Effects */

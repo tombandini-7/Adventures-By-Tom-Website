@@ -11,7 +11,7 @@ interface Promotion {
   bgGradient: string;
 }
 
-// WDW-only promotions (same data as homepage, different layout)
+// WDW-only promotions - all use Ocean Flow gradient (blue) for WDW consistency
 const wdwPromotions: Promotion[] = [
   {
     id: '1',
@@ -27,7 +27,7 @@ const wdwPromotions: Promotion[] = [
     shortDescription: 'Get a FREE dining plan for kids (ages 3 to 9) when you purchase a package with dining for adults.',
     offerText: 'Kids Eat Free',
     validDates: 'All of 2026',
-    bgGradient: 'from-magenta via-magenta to-magenta-light',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
   },
   {
     id: '4',
@@ -35,7 +35,7 @@ const wdwPromotions: Promotion[] = [
     shortDescription: 'Save on vacation packages for stays most nights from February to July 2026.',
     offerText: 'Spring Savings',
     validDates: 'Feb 22 – Jul 25, 2026',
-    bgGradient: 'from-ocean-dark via-ocean to-aqua-dark',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
   },
   {
     id: '5',
@@ -43,7 +43,7 @@ const wdwPromotions: Promotion[] = [
     shortDescription: 'Save up to 30% on rooms at select Disney Resort hotels for stays this summer.',
     offerText: 'Up to 30% Off',
     validDates: 'May 1 – Oct 4, 2026',
-    bgGradient: 'from-ocean via-aqua-dark to-aqua',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
   },
   {
     id: '6',
@@ -51,7 +51,7 @@ const wdwPromotions: Promotion[] = [
     shortDescription: 'Special room rates for Florida residents at select Disney Resort hotels.',
     offerText: 'FL Residents',
     validDates: 'May 1 – Jul 29, 2026',
-    bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
   },
   {
     id: '7',
@@ -59,7 +59,7 @@ const wdwPromotions: Promotion[] = [
     shortDescription: 'Annual Passholders save up to 40% on rooms at select Disney Resort hotels this summer.',
     offerText: 'Up to 40% Off',
     validDates: 'May 1 – Jul 29, 2026',
-    bgGradient: 'from-aqua-dark via-ocean to-ocean-dark',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
   },
 ];
 
@@ -130,9 +130,7 @@ const PromoCard = ({ promo, delay }: PromoCardProps) => {
       {/* Gradient Header */}
       <div className={`bg-gradient-to-r ${promo.bgGradient} p-5`}>
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
-            <Castle className="w-5 h-5" />
-          </div>
+          <Castle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
           <div>
             <span className="inline-block px-2.5 py-0.5 bg-yellow text-ocean text-xs font-bold uppercase tracking-wider rounded-full mb-2">
               {promo.offerText}

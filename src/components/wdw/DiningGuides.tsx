@@ -151,9 +151,7 @@ const DiningCard = ({ category, delay }: DiningCardProps) => {
       {/* Header */}
       <div className={`bg-gradient-to-r ${colorMap[category.title]} p-5 text-white`}>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-            {iconMap[category.title]}
-          </div>
+          {iconMap[category.title]}
           <h3 className="font-serif text-xl font-semibold">{category.title}</h3>
         </div>
       </div>
@@ -216,9 +214,7 @@ const DiningPlanCard = ({ plan, delay, onLearnMore }: DiningPlanCardProps) => {
       {/* Header */}
       <div className="bg-gradient-to-r from-magenta to-ocean p-5 text-white">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-            <BookOpen className="w-5 h-5" />
-          </div>
+          <BookOpen className="w-6 h-6" />
           <h3 className="font-serif text-xl font-semibold">{plan.title}</h3>
         </div>
       </div>

@@ -110,7 +110,12 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo container with fixed height to prevent layout shift */}
-          <div className="relative h-12 md:h-14" style={{ width: `${150 * logoScale}px` }}>
+          <div
+            className="relative h-10 sm:h-12 md:h-14 w-[100px] sm:w-[130px] md:w-[150px]"
+            style={{
+              width: logoScale < 1 ? `${150 * logoScale}px` : undefined
+            }}
+          >
             <Link
               to="/"
               onClick={handleLogoClick}
@@ -122,7 +127,7 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
               <img
                 src={ASSETS.logos.white}
                 alt="Adventures by Tom"
-                className="h-12 md:h-14 w-auto"
+                className="h-10 sm:h-12 md:h-14 w-auto"
               />
             </Link>
           </div>

@@ -62,7 +62,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Pay only half the deposit when you book an eligible Disney cruise. Set sail to incredible destinations worldwide!',
     offerText: '50% Deposit',
     validDates: 'Book by Jan 18, 2026',
-    bgGradient: 'from-aqua-dark via-aqua to-ocean',
+    bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
     fullDescription: `
 <h2>Offer Details</h2>
 <p>Book an eligible Disney cruise by January 18, 2026, and pay only half of the deposit on the day you make your reservation.</p>
@@ -105,7 +105,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Get a FREE dining plan for kids (ages 3 to 9) when you purchase a package with dining for adults.',
     offerText: 'Kids Eat Free',
     validDates: 'All of 2026',
-    bgGradient: 'from-magenta via-magenta to-magenta-light',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Overview</h2>
 <p>Get a <strong>FREE dining plan for kids (ages 3 to 9)</strong> when you purchase a Walt Disney Travel Company package that includes:</p>
@@ -140,7 +140,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Save on vacation packages for stays most nights from February to July 2026.',
     offerText: 'Spring Savings',
     validDates: 'Feb 22 – Jul 25, 2026',
-    bgGradient: 'from-ocean-dark via-ocean to-aqua-dark',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
 
@@ -180,7 +180,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Save up to 30% on rooms at select Disney Resort hotels for stays this summer.',
     offerText: 'Up to 30% Off',
     validDates: 'May 1 – Oct 4, 2026',
-    bgGradient: 'from-ocean via-aqua-dark to-aqua',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
 
@@ -214,7 +214,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Special room rates for Florida residents at select Disney Resort hotels.',
     offerText: 'FL Residents',
     validDates: 'May 1 – Jul 29, 2026',
-    bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
 
@@ -251,7 +251,7 @@ const promotions: Promotion[] = [
     shortDescription: 'Annual Passholders save up to 40% on rooms at select Disney Resort hotels this summer.',
     offerText: 'Up to 40% Off',
     validDates: 'May 1 – Jul 29, 2026',
-    bgGradient: 'from-aqua-dark via-ocean to-ocean-dark',
+    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
 
@@ -445,7 +445,7 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
                           href={QUOTE_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-6 py-3 bg-white text-ocean font-semibold text-sm uppercase tracking-wide rounded-lg hover:bg-yellow hover:text-ocean-dark transition-all duration-300 shadow-lg text-center"
+                          className="px-6 py-3 bg-magenta text-white font-semibold text-sm uppercase tracking-wide rounded-lg hover:bg-magenta-light transition-all duration-300 shadow-lg text-center"
                         >
                           Get Quote
                         </a>

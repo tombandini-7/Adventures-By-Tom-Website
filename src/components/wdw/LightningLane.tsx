@@ -39,9 +39,7 @@ const LightningLane = () => {
           <div className="card-hover bg-gradient-to-br from-aqua to-ocean rounded-2xl overflow-hidden shadow-xl">
             <div className="p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
+                <Zap className="w-8 h-8 text-white" />
                 <div>
                   <h3 className="font-serif text-2xl text-white">{lightningLaneInfo.multiPass.title}</h3>
                   <p className="text-white/70 text-sm">{lightningLaneInfo.multiPass.price}</p>
@@ -67,9 +65,7 @@ const LightningLane = () => {
           <div className="card-hover bg-white border-2 border-gray-100 rounded-2xl overflow-hidden shadow-lg">
             <div className="p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-magenta/10 flex items-center justify-center">
-                  <Star className="w-6 h-6 text-magenta" />
-                </div>
+                <Star className="w-8 h-8 text-magenta" />
                 <div>
                   <h3 className="font-serif text-2xl text-ocean">{lightningLaneInfo.singlePass.title}</h3>
                   <p className="text-gray-500 text-sm">{lightningLaneInfo.singlePass.price}</p>
@@ -98,9 +94,7 @@ const LightningLane = () => {
         {/* Tips Banner */}
         <div className="bg-sky rounded-2xl p-6 lg:p-8">
           <div className="flex flex-col lg:flex-row items-center gap-6">
-            <div className="flex-shrink-0 w-16 h-16 rounded-full bg-yellow/20 flex items-center justify-center">
-              <Zap className="w-8 h-8 text-yellow-dark" />
-            </div>
+            <Zap className="w-10 h-10 text-yellow-dark flex-shrink-0" />
             <div className="flex-1 text-center lg:text-left">
               <h4 className="font-serif text-xl text-ocean mb-2">Pro Tip: Book Early!</h4>
               <p className="text-gray-600 text-sm leading-relaxed">

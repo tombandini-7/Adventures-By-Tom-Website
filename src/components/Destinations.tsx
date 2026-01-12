@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Castle, Ship, Palmtree, Sparkles, Anchor, Globe, MapPin, ArrowRight } from 'lucide-react';
 import { ASSETS } from '../constants/assets';
@@ -9,6 +10,7 @@ interface DestinationCardProps {
   features: string[];
   image: string;
   imagePosition?: string;
+  link?: string;
   delay: number;
 }
 
@@ -19,6 +21,7 @@ const DestinationCard = ({
   features,
   image,
   imagePosition = 'center',
+  link,
   delay,
 }: DestinationCardProps) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -42,7 +45,7 @@ const DestinationCard = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ocean/60 to-transparent" />
         {icon && (
-          <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-aqua flex items-center justify-center text-white">
+          <div className="absolute top-4 left-4 text-white drop-shadow-lg">
             {icon}
           </div>
         )}
@@ -64,13 +67,23 @@ const DestinationCard = ({
         </ul>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 text-aqua font-medium text-sm hover:text-aqua-dark transition-colors group/link"
-        >
-          Learn More
-          <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-        </a>
+        {link ? (
+          <Link
+            to={link}
+            className="inline-flex items-center gap-2 text-aqua font-medium text-sm hover:text-aqua-dark transition-colors group/link"
+          >
+            Learn More
+            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+          </Link>
+        ) : (
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-aqua font-medium text-sm hover:text-aqua-dark transition-colors group/link"
+          >
+            Learn More
+            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -87,6 +100,7 @@ const Destinations = () => {
         'Experience the magic of four incredible theme parks, two water parks, and world-class resorts in Orlando.',
       features: ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', 'Animal Kingdom'],
       image: ASSETS.destinations.waltDisneyWorld,
+      link: '/walt-disney-world',
     },
     {
       icon: <Sparkles className="w-6 h-6" />,

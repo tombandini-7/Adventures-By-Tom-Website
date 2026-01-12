@@ -95,7 +95,7 @@ const TimelineNode = ({ step, index, isVisible, position }: TimelineNodeProps) =
         />
       </div>
 
-      {/* Icon Circle (on the line) */}
+      {/* Icon Circle (on the line) - exception: timeline nodes use backgrounds for visual continuity */}
       <div className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-br from-aqua to-ocean flex items-center justify-center text-white shadow-lg border-4 border-white">
         {step.icon}
       </div>
@@ -133,6 +133,7 @@ const MobileTimelineNode = ({ step, index }: MobileTimelineNodeProps) => {
       {/* Content */}
       <div className="bg-white rounded-xl shadow-md p-5 border border-gray-100 ml-4">
         <div className="flex items-start gap-4">
+          {/* Exception: timeline nodes use backgrounds for visual continuity */}
           <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br ${gradientColors[index % gradientColors.length]} flex items-center justify-center text-white`}>
             {step.icon}
           </div>

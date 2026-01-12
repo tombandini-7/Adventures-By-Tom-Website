@@ -20,7 +20,7 @@ const Hero = () => {
       />
 
       {/* Dark Overlay for text readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ocean-dark/50 via-ocean/40 to-ocean-dark/50" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
@@ -68,7 +68,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 animate-bounce">
         <a
           href="#destinations"
           className="flex flex-col items-center gap-2 text-white hover:text-yellow transition-colors"

@@ -66,7 +66,7 @@ const GuideCard = ({ item, delay, isFullWidth }: GuideCardProps) => {
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-aqua/20 flex items-center justify-center text-aqua">
+        <div className="flex-shrink-0 text-aqua">
           {iconMap[item.title]}
         </div>
         <div className="flex-1">
