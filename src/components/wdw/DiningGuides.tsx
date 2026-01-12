@@ -186,7 +186,7 @@ interface TipItemProps {
 const TipItem = ({ number, title, description }: TipItemProps) => {
   return (
     <div className="text-center">
-      <span className="text-3xl font-serif text-aqua/30">{number}</span>
+      <span className="text-3xl font-serif text-ocean/50">{number}</span>
       <h4 className="font-serif text-lg text-ocean mt-1 mb-2">{title}</h4>
       <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
     </div>

@@ -1,5 +1,17 @@
-import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, ExternalLink } from 'lucide-react';
-import { ASSETS, QUOTE_URL } from '../constants';
+import { Mail, Phone, MapPin, Facebook, Instagram, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ASSETS, QUOTE_URL, SOCIAL_LINKS } from '../constants';
+
+// TikTok icon (not available in lucide-react)
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,11 +27,11 @@ const Footer = () => {
   ];
 
   const destinations = [
-    'Walt Disney World',
-    'Disneyland Resort',
-    'Disney Cruise Line',
-    'Adventures by Disney',
-    'Aulani Resort',
+    { name: 'Walt Disney World', href: '/walt-disney-world' },
+    { name: 'Disneyland Resort' },
+    { name: 'Disney Cruise Line' },
+    { name: 'Adventures by Disney' },
+    { name: 'Aulani Resort' },
   ];
 
   return (
@@ -35,11 +47,11 @@ const Footer = () => {
               <img
                 src={ASSETS.logos.white}
                 alt="Adventures by Tom"
-                className="h-14 w-auto mx-auto"
+                className="h-50 w-auto mx-auto"
               />
             </a>
             <p className="text-sky text-sm leading-relaxed max-w-xs mx-auto">
-              Your boutique travel advisor specializing in Disney destinations and cruise vacations.
+              Let's plan something magical together!
             </p>
           </div>
 
@@ -91,8 +103,17 @@ const Footer = () => {
               <h4 className="font-serif text-base font-semibold mb-3 text-yellow">Destinations</h4>
               <ul className="space-y-2">
                 {destinations.map((destination) => (
-                  <li key={destination}>
-                    <span className="text-sm text-white">{destination}</span>
+                  <li key={destination.name}>
+                    {destination.href ? (
+                      <Link
+                        to={destination.href}
+                        className="text-sm text-white hover:text-yellow transition-colors"
+                      >
+                        {destination.name}
+                      </Link>
+                    ) : (
+                      <span className="text-sm text-white">{destination.name}</span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -102,25 +123,31 @@ const Footer = () => {
           {/* Social Icons - Centered */}
           <div className="flex items-center justify-center gap-6">
             <a
-              href="#"
+              href={SOCIAL_LINKS.facebook.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white hover:text-yellow transition-all duration-300"
               aria-label="Facebook"
             >
               <Facebook className="w-6 h-6" />
             </a>
             <a
-              href="#"
+              href={SOCIAL_LINKS.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white hover:text-yellow transition-all duration-300"
               aria-label="Instagram"
             >
               <Instagram className="w-6 h-6" />
             </a>
             <a
-              href="#"
+              href={SOCIAL_LINKS.tiktok.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white hover:text-yellow transition-all duration-300"
-              aria-label="Twitter"
+              aria-label="TikTok"
             >
-              <Twitter className="w-6 h-6" />
+              <TikTokIcon className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -133,34 +160,39 @@ const Footer = () => {
               <img
                 src={ASSETS.logos.white}
                 alt="Adventures by Tom"
-                className="h-14 w-auto"
+                className="h-50 w-auto"
               />
             </a>
             <p className="text-sky text-sm leading-relaxed">
-              Your boutique travel advisor specializing in Disney destinations and cruise vacations.
-              Making every client feel like they are the only client.
+              Let's plan something magical together!
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href={SOCIAL_LINKS.facebook.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:text-yellow transition-all duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href={SOCIAL_LINKS.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:text-yellow transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href={SOCIAL_LINKS.tiktok.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:text-yellow transition-all duration-300"
-                aria-label="Twitter"
+                aria-label="TikTok"
               >
-                <Twitter className="w-6 h-6" />
+                <TikTokIcon className="w-6 h-6" />
               </a>
             </div>
           </div>
@@ -189,8 +221,17 @@ const Footer = () => {
             <h4 className="font-serif text-lg font-semibold mb-6 text-yellow">Destinations</h4>
             <ul className="space-y-3">
               {destinations.map((destination) => (
-                <li key={destination}>
-                  <span className="text-sm text-white">{destination}</span>
+                <li key={destination.name}>
+                  {destination.href ? (
+                    <Link
+                      to={destination.href}
+                      className="text-sm text-white hover:text-yellow transition-colors"
+                    >
+                      {destination.name}
+                    </Link>
+                  ) : (
+                    <span className="text-sm text-white">{destination.name}</span>
+                  )}
                 </li>
               ))}
             </ul>

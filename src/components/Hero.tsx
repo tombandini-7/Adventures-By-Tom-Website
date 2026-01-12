@@ -27,7 +27,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Tagline */}
           <p className="text-yellow uppercase tracking-[0.3em] text-sm font-semibold mb-6 animate-fade-in-down drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            Where Dreams Set Sail
+            Where Your Story Begins
           </p>
 
           {/* Main Heading - All white with yellow accent */}
@@ -43,8 +43,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
-            Experience personalized, luxury travel planning for Disney destinations
-            and cruise vacations. Where every client feels like the only client.
+            Stress-free travel planning for Disney, Cruising, and beyond. Where every client feels like the only client.
           </p>
 
           {/* CTA Buttons - White text on both */}
@@ -71,11 +70,11 @@ const Hero = () => {
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 animate-bounce">
         <a
           href="#destinations"
-          className="flex flex-col items-center gap-2 text-white hover:text-yellow transition-colors"
+          className="flex flex-col items-center gap-2 hover:text-yellow transition-colors"
           aria-label="Scroll to destinations"
         >
-          <span className="text-xs uppercase tracking-widest font-medium">Scroll</span>
-          <ChevronDown className="w-5 h-5" />
+          <span className="text-xs uppercase tracking-widest font-medium text-white lg:text-aqua">Scroll</span>
+          <ChevronDown className="w-5 h-5 text-white lg:text-aqua" />
         </a>
       </div>
 

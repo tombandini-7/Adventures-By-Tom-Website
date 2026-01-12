@@ -1,8 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Facebook, Instagram } from 'lucide-react';
 import { useLogoAnimation } from '../hooks/useScrollAnimation';
-import { ASSETS, QUOTE_URL } from '../constants';
+import { ASSETS, QUOTE_URL, SOCIAL_LINKS } from '../constants';
+
+// TikTok icon (not available in lucide-react)
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>
+);
 const BANNER_HEIGHT = 44; // Height of the promo banner in pixels
 
 interface HeaderProps {
@@ -13,7 +24,7 @@ interface NavItem {
   name: string;
   href: string;
   type: 'route' | 'hash' | 'dropdown';
-  items?: { name: string; href: string; type: 'route' | 'hash' }[];
+  items?: { name: string; href: string; type: 'route' | 'hash' | 'external'; icon?: React.ReactNode }[];
 }
 
 const Header = ({ hasBanner = false }: HeaderProps) => {
@@ -60,6 +71,16 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
     },
     { name: 'About', href: '/#about', type: 'hash' },
     { name: 'Testimonials', href: '/#testimonials', type: 'hash' },
+    {
+      name: 'Socials',
+      href: '#',
+      type: 'dropdown',
+      items: [
+        { name: SOCIAL_LINKS.instagram.name, href: SOCIAL_LINKS.instagram.url, type: 'external', icon: <Instagram className="w-4 h-4" /> },
+        { name: SOCIAL_LINKS.facebook.name, href: SOCIAL_LINKS.facebook.url, type: 'external', icon: <Facebook className="w-4 h-4" /> },
+        { name: SOCIAL_LINKS.tiktok.name, href: SOCIAL_LINKS.tiktok.url, type: 'external', icon: <TikTokIcon className="w-4 h-4" /> },
+      ],
+    },
   ];
 
   const handleNavClick = (item: { href: string; type: 'route' | 'hash' }) => {
@@ -167,10 +188,22 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
                             >
                               {subItem.name}
                             </Link>
+                          ) : subItem.type === 'external' ? (
+                            <a
+                              key={subItem.name}
+                              href={subItem.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setOpenDropdown(null)}
+                              className="flex items-center gap-2 px-4 py-2.5 text-white hover:text-yellow hover:bg-white/10 transition-colors text-sm"
+                            >
+                              {subItem.icon}
+                              {subItem.name}
+                            </a>
                           ) : (
                             <button
                               key={subItem.name}
-                              onClick={() => handleNavClick(subItem)}
+                              onClick={() => handleNavClick(subItem as { href: string; type: 'route' | 'hash' })}
                               className="block w-full text-left px-4 py-2.5 text-white hover:text-yellow hover:bg-white/10 transition-colors text-sm"
                             >
                               {subItem.name}
@@ -267,10 +300,22 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
                             >
                               {subItem.name}
                             </Link>
+                          ) : subItem.type === 'external' ? (
+                            <a
+                              key={subItem.name}
+                              href={subItem.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="flex items-center gap-2 text-white/80 hover:text-yellow transition-colors text-sm py-2"
+                            >
+                              {subItem.icon}
+                              {subItem.name}
+                            </a>
                           ) : (
                             <button
                               key={subItem.name}
-                              onClick={() => handleNavClick(subItem)}
+                              onClick={() => handleNavClick(subItem as { href: string; type: 'route' | 'hash' })}
                               className="block w-full text-left text-white/80 hover:text-yellow transition-colors text-sm py-2"
                             >
                               {subItem.name}
