@@ -1,7 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, ExternalLink } from 'lucide-react';
-
-const LOGO_URL = 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png';
-const QUOTE_URL = 'https://tinyurl.com/advbytom';
+import { ASSETS, QUOTE_URL } from '../constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -35,7 +33,7 @@ const Footer = () => {
           <div className="text-center mb-10">
             <a href="#home" className="inline-block hover:opacity-80 transition-opacity mb-4">
               <img
-                src={LOGO_URL}
+                src={ASSETS.logos.white}
                 alt="Adventures by Tom"
                 className="h-14 w-auto mx-auto"
               />
@@ -133,7 +131,7 @@ const Footer = () => {
           <div className="space-y-6">
             <a href="#home" className="block hover:opacity-80 transition-opacity">
               <img
-                src={LOGO_URL}
+                src={ASSETS.logos.white}
                 alt="Adventures by Tom"
                 className="h-14 w-auto"
               />

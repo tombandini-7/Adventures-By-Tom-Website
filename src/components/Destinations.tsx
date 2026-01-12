@@ -51,7 +51,7 @@ const DestinationCard = ({
       {/* Content */}
       <div className="p-5">
         <h3 className="font-serif text-xl lg:text-2xl text-ocean mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">{description}</p>
+        <p className="text-gray-600 text-sm mb-4 leading-relaxed">{description}</p>
 
         {/* Features */}
         <ul className="space-y-1.5 mb-4">
@@ -106,7 +106,7 @@ const Destinations = () => {
     },
     {
       icon: <Palmtree className="w-6 h-6" />,
-      title: 'Aulani Resort',
+      title: 'Au\'Lani Resort & Spa',
       description:
         "Discover Hawaiian paradise at Disney's stunning beachfront resort in Ko Olina, Oahu.",
       features: ['Ko Olina Beach', 'Spa Services', 'Cultural Experiences', 'Character Dining'],

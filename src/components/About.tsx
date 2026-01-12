@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Award, Heart, Clock, Shield } from 'lucide-react';
 import { IoMdHappy } from 'react-icons/io';
+import { ASSETS } from '../constants/assets';
 
 const About = () => {
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
@@ -47,7 +48,7 @@ const About = () => {
             {/* Main Image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Tom.JPG"
+                src={ASSETS.team.tom}
                 alt="Tom - Your Travel Advisor"
                 className="w-full h-[500px] object-cover object-top"
               />

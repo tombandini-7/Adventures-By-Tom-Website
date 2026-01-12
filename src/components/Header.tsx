@@ -1,19 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLogoAnimation } from '../hooks/useScrollAnimation';
-
-const LOGO_URL = 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png';
-const QUOTE_URL = 'https://tinyurl.com/advbytom';
+import { ASSETS, QUOTE_URL } from '../constants';
 const BANNER_HEIGHT = 44; // Height of the promo banner in pixels
 
 interface HeaderProps {
   hasBanner?: boolean;
 }
 
+interface NavItem {
+  name: string;
+  href: string;
+  type: 'route' | 'hash' | 'dropdown';
+  items?: { name: string; href: string; type: 'route' | 'hash' }[];
+}
+
 const Header = ({ hasBanner = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
   const { scale } = useLogoAnimation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +34,67 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => setOpenDropdown(null);
+    if (openDropdown) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [openDropdown]);
+
   // When mobile menu is open, keep logo at normal size
   const logoScale = isMobileMenuOpen ? 1 : scale;
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Promotions', href: '#promotions' },
-    { name: 'Destinations', href: '#destinations' },
-    { name: 'About', href: '#about' },
-    { name: 'Testimonials', href: '#testimonials' },
+  const navLinks: NavItem[] = [
+    { name: 'Home', href: '/', type: 'route' },
+    { name: 'Promotions', href: '/#promotions', type: 'hash' },
+    {
+      name: 'Destinations',
+      href: '#',
+      type: 'dropdown',
+      items: [
+        { name: 'Walt Disney World', href: '/walt-disney-world', type: 'route' },
+        { name: 'All Destinations', href: '/#destinations', type: 'hash' },
+      ],
+    },
+    { name: 'About', href: '/#about', type: 'hash' },
+    { name: 'Testimonials', href: '/#testimonials', type: 'hash' },
   ];
+
+  const handleNavClick = (item: { href: string; type: 'route' | 'hash' }) => {
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+
+    if (item.type === 'hash') {
+      // Check if we're on the homepage
+      if (location.pathname === '/') {
+        // Already on homepage, just scroll to section
+        const sectionId = item.href.replace('/#', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Navigate to homepage first, then scroll
+        navigate('/');
+        setTimeout(() => {
+          const sectionId = item.href.replace('/#', '');
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const headerTop = hasBanner ? BANNER_HEIGHT : 0;
 
@@ -50,32 +111,95 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
         <nav className="flex items-center justify-between">
           {/* Logo container with fixed height to prevent layout shift */}
           <div className="relative h-12 md:h-14" style={{ width: `${150 * logoScale}px` }}>
-            <a
-              href="#home"
+            <Link
+              to="/"
+              onClick={handleLogoClick}
               className="absolute top-0 left-0 flex items-center hover:opacity-80 transition-opacity origin-top-left logo-animated"
               style={{
                 transform: `scale(${logoScale})`,
               }}
             >
               <img
-                src={LOGO_URL}
+                src={ASSETS.logos.white}
                 alt="Adventures by Tom"
                 className="h-12 md:h-14 w-auto"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-white hover:text-yellow transition-colors text-sm font-medium tracking-wide uppercase"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              if (link.type === 'dropdown') {
+                return (
+                  <div key={link.name} className="relative">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenDropdown(openDropdown === link.name ? null : link.name);
+                      }}
+                      className="flex items-center gap-1 text-white hover:text-yellow transition-colors text-sm font-medium tracking-wide uppercase"
+                    >
+                      {link.name}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          openDropdown === link.name ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {openDropdown === link.name && link.items && (
+                      <div
+                        className="absolute top-full left-0 mt-2 w-56 bg-ocean/95 backdrop-blur-md rounded-lg shadow-xl py-2 animate-fade-in-down"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {link.items.map((subItem) =>
+                          subItem.type === 'route' ? (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              onClick={() => setOpenDropdown(null)}
+                              className="block px-4 py-2.5 text-white hover:text-yellow hover:bg-white/10 transition-colors text-sm"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ) : (
+                            <button
+                              key={subItem.name}
+                              onClick={() => handleNavClick(subItem)}
+                              className="block w-full text-left px-4 py-2.5 text-white hover:text-yellow hover:bg-white/10 transition-colors text-sm"
+                            >
+                              {subItem.name}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              if (link.type === 'route') {
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-white hover:text-yellow transition-colors text-sm font-medium tracking-wide uppercase"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link as { href: string; type: 'route' | 'hash' })}
+                  className="text-white hover:text-yellow transition-colors text-sm font-medium tracking-wide uppercase"
+                >
+                  {link.name}
+                </button>
+              );
+            })}
             <a
               href={QUOTE_URL}
               target="_blank"
@@ -103,20 +227,80 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
         {/* Mobile Navigation */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="bg-ocean/95 backdrop-blur-md rounded-2xl p-6 space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-white hover:text-yellow transition-colors text-base font-medium tracking-wide py-2"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="bg-ocean/95 backdrop-blur-md rounded-2xl p-6 space-y-2">
+            {navLinks.map((link) => {
+              if (link.type === 'dropdown') {
+                return (
+                  <div key={link.name}>
+                    <button
+                      onClick={() =>
+                        setMobileExpandedDropdown(
+                          mobileExpandedDropdown === link.name ? null : link.name
+                        )
+                      }
+                      className="flex items-center justify-between w-full text-white hover:text-yellow transition-colors text-base font-medium tracking-wide py-2"
+                    >
+                      {link.name}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          mobileExpandedDropdown === link.name ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {mobileExpandedDropdown === link.name && link.items && (
+                      <div className="pl-4 space-y-1 mt-1 mb-2">
+                        {link.items.map((subItem) =>
+                          subItem.type === 'route' ? (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="block text-white/80 hover:text-yellow transition-colors text-sm py-2"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ) : (
+                            <button
+                              key={subItem.name}
+                              onClick={() => handleNavClick(subItem)}
+                              className="block w-full text-left text-white/80 hover:text-yellow transition-colors text-sm py-2"
+                            >
+                              {subItem.name}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              if (link.type === 'route') {
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-white hover:text-yellow transition-colors text-base font-medium tracking-wide py-2"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link as { href: string; type: 'route' | 'hash' })}
+                  className="block w-full text-left text-white hover:text-yellow transition-colors text-base font-medium tracking-wide py-2"
+                >
+                  {link.name}
+                </button>
+              );
+            })}
             <a
               href={QUOTE_URL}
               target="_blank"

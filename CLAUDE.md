@@ -13,7 +13,7 @@ React 19 + TypeScript + Vite SPA for a boutique travel advisor (Disney destinati
 - **Language:**
 - **Database:**
 - **Other:**
-Single-page marketing site with no routing or external API calls.
+Multi-page marketing site using react-router-dom for client-side routing. No external API calls.
 
 ### Key Directories
 
@@ -71,8 +71,7 @@ export default function(id) { ... }
 
 
 ### Known Gotchas
-
-*Add lessons learned here as you encounter them*
+- Never use background colors behind icons. Show icons directly without circular/rounded backgrounds. Apply color directly to the icon.
 
 
 ### Component Structure
@@ -103,7 +102,7 @@ App.tsx
 - Accent: Yellow (#FFD60A), Ocean Blue (#023E8A), Sky (#CAF0F8)
 
 **Typography:**
-- Headings: Cormorant Garamond (serif)
+- Headings: Montserrat (sans-serif)
 - Body: Inter (sans-serif)
 
 **Key Design Rules:**

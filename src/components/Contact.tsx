@@ -1,7 +1,6 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Mail, Phone, MapPin, ExternalLink, Compass } from 'lucide-react';
-
-const QUOTE_URL = 'https://tinyurl.com/advbytom';
+import { QUOTE_URL } from '../constants';
 
 const Contact = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();

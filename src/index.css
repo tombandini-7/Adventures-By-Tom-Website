@@ -1,5 +1,5 @@
 /* Google Fonts Import - must be first */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
 
@@ -34,7 +34,7 @@
  *    - Accent: Sunny Yellow (#FFD60A), Deep Ocean Blue (#023E8A)
  *
  * 6. Typography:
- *    - Headings: Cormorant Garamond (serif)
+ *    - Headings: Montserrat (sans-serif)
  *    - Body: Inter (sans-serif)
  *
  * 8. Icons:
@@ -43,9 +43,9 @@
  *    - Use color directly on the icon itself
  *
  * 7. Assets:
- *    - Logo (white): https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/ABT%20White.png
- *    - Tom's photo: https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Tom.JPG
- *      (Use object-top to prevent head cropping)
+ *    - All assets centralized in src/constants/assets.ts (use ASSETS object)
+ *    - Logo (white): ASSETS.logos.white
+ *    - Tom's photo: ASSETS.team.tom (use object-top to prevent head cropping)
  *
  * ===========================================
  */
@@ -87,7 +87,7 @@
   --color-gray-900: #0F172A;
 
   /* Typography */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Montserrat', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
   /* Custom spacing */

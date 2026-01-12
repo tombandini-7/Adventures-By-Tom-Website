@@ -3,7 +3,7 @@ import { X, Ship } from 'lucide-react';
 interface PromoBannerProps {
   isVisible: boolean;
   onClose: () => void;
-  onLearnMore: () => void;
+  onLearnMore?: () => void;
 }
 
 const PromoBanner = ({ isVisible, onClose, onLearnMore }: PromoBannerProps) => {
@@ -15,12 +15,14 @@ const PromoBanner = ({ isVisible, onClose, onLearnMore }: PromoBannerProps) => {
         <Ship className="w-5 h-5 flex-shrink-0 hidden sm:block" />
         <p className="text-center">
           <span className="font-semibold">Hurry!</span> 50% off Disney Cruise Line deposits ends January 18!{' '}
-          <button
-            onClick={onLearnMore}
-            className="underline font-semibold hover:text-yellow transition-colors"
-          >
-            Learn More
-          </button>
+{onLearnMore && (
+            <button
+              onClick={onLearnMore}
+              className="underline font-semibold hover:text-yellow transition-colors"
+            >
+              Learn More
+            </button>
+          )}
         </p>
         <button
           onClick={onClose}
