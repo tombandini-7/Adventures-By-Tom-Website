@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Mail, Phone, MapPin, ExternalLink, Compass } from 'lucide-react';
 import { QUOTE_URL } from '../constants';
+import { trackQuoteClick } from '../utils/analytics';
 
 const Contact = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -40,6 +41,7 @@ const Contact = () => {
             href={QUOTE_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackQuoteClick('contact')}
             className="inline-flex items-center gap-2 px-10 py-5 rounded-lg bg-magenta text-white font-semibold uppercase tracking-wide text-base hover:bg-magenta-light transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
             Get Your Free Quote

@@ -10,6 +10,7 @@ import {
   Testimonials,
   Contact,
 } from '../components';
+import { HomePageSEO } from '../components/SEO';
 
 // DCL Half Deposit promo ID
 const DCL_PROMO_ID = '2';
@@ -24,6 +25,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen">
+      <HomePageSEO />
       <PromoBanner
         isVisible={isBannerVisible}
         onClose={() => setIsBannerVisible(false)}
