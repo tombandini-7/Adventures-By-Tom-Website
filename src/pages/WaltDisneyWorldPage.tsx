@@ -9,6 +9,7 @@ import {
   LightningLane,
   WDWPromotions,
 } from '../components/wdw';
+import { WaltDisneyWorldPageSEO } from '../components/SEO';
 
 const WaltDisneyWorldPage = () => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
@@ -20,6 +21,7 @@ const WaltDisneyWorldPage = () => {
 
   return (
     <div className="min-h-screen">
+      <WaltDisneyWorldPageSEO />
       <PromoBanner
         isVisible={isBannerVisible}
         onClose={() => setIsBannerVisible(false)}

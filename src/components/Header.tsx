@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Facebook, Instagram } from 'lucide-react';
 import { useLogoAnimation } from '../hooks/useScrollAnimation';
 import { ASSETS, QUOTE_URL, SOCIAL_LINKS } from '../constants';
+import { trackQuoteClick, trackNavClick } from '../utils/analytics';
 
 // TikTok icon (not available in lucide-react)
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -83,9 +84,14 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
     },
   ];
 
-  const handleNavClick = (item: { href: string; type: 'route' | 'hash' }) => {
+  const handleNavClick = (item: { href: string; type: 'route' | 'hash'; name?: string }) => {
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
+
+    // Track navigation click
+    if (item.name) {
+      trackNavClick(item.name);
+    }
 
     if (item.type === 'hash') {
       // Check if we're on the homepage
@@ -242,6 +248,7 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
               href={QUOTE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackQuoteClick('header')}
               className="px-6 py-2.5 rounded-lg bg-magenta text-white font-semibold text-sm uppercase tracking-wide hover:bg-magenta-light transition-all duration-300"
             >
               Get a Free Quote
@@ -355,7 +362,10 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
               href={QUOTE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackQuoteClick('mobile-menu');
+                setIsMobileMenuOpen(false);
+              }}
               className="block px-6 py-3 rounded-lg bg-magenta text-white font-semibold text-sm uppercase tracking-wide text-center mt-4 hover:bg-magenta-light transition-all"
             >
               Get a Free Quote

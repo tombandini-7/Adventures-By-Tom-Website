@@ -1,6 +1,7 @@
 import { useParallax } from '../hooks/useScrollAnimation';
 import { ChevronDown } from 'lucide-react';
 import { QUOTE_URL } from '../constants';
+import { trackQuoteClick } from '../utils/analytics';
 
 const Hero = () => {
   const scrollOffset = useParallax();
@@ -52,6 +53,7 @@ const Hero = () => {
               href={QUOTE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackQuoteClick('hero')}
               className="px-8 py-4 rounded-lg bg-magenta text-white font-semibold uppercase tracking-wide text-sm hover:bg-magenta-light transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               Get a Free Quote

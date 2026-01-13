@@ -1,0 +1,8 @@
+# robots.txt for Adventures By Tom
+# https://adventuresbytom.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://adventuresbytom.com/sitemap.xml

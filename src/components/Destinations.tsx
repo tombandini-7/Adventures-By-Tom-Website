@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Castle, Ship, Palmtree, Sparkles, Anchor, Globe, MapPin, ArrowRight } from 'lucide-react';
 import { ASSETS } from '../constants/assets';
+import { trackDestinationClick } from '../utils/analytics';
 
 interface DestinationCardProps {
   icon?: React.ReactNode;
@@ -70,6 +71,7 @@ const DestinationCard = ({
         {link ? (
           <Link
             to={link}
+            onClick={() => trackDestinationClick(title)}
             className="inline-flex items-center gap-2 text-aqua font-medium text-sm hover:text-aqua-dark transition-colors group/link"
           >
             Learn More
@@ -78,6 +80,7 @@ const DestinationCard = ({
         ) : (
           <a
             href="#contact"
+            onClick={() => trackDestinationClick(title)}
             className="inline-flex items-center gap-2 text-aqua font-medium text-sm hover:text-aqua-dark transition-colors group/link"
           >
             Learn More
