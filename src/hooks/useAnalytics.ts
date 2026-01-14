@@ -4,13 +4,19 @@ import { trackPageView, trackScrollDepth, trackSectionView, isGAEnabled } from '
 
 /**
  * Hook to automatically track page views on route changes
+ * Uses a ref to prevent duplicate tracking in React StrictMode
  */
 export const usePageTracking = (): void => {
   const location = useLocation();
+  const lastTrackedPath = useRef<string>('');
 
   useEffect(() => {
-    // Track page view on route change
     const path = location.pathname + location.search + location.hash;
+
+    // Prevent duplicate page views (React StrictMode runs effects twice)
+    if (path === lastTrackedPath.current) return;
+
+    lastTrackedPath.current = path;
     trackPageView(path, document.title);
   }, [location]);
 };
