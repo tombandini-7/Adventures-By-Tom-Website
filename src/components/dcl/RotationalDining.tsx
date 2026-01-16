@@ -20,7 +20,7 @@ const features = [
   {
     icon: <Sparkles className="w-6 h-6" />,
     title: 'Immersive Experiences',
-    description: 'Animator\'s Palate brings drawings to life while you dine. Each venue tells its own story.',
+    description: 'Experience Simba\’s journey come to life at the Disney Destiny\’s Pride Lands: Feast of The Lion King, an immersive dining experience blending Broadway-style performances with vibrant, African-inspired cuisine.',
   },
 ];
 
