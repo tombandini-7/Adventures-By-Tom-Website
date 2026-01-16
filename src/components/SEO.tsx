@@ -97,3 +97,11 @@ export const WaltDisneyWorldPageSEO = (): ReactNode => (
     canonical="/walt-disney-world"
   />
 );
+
+export const DisneyCruiseLinePageSEO = (): ReactNode => (
+  <SEO
+    title="Disney Cruise Line Vacation Planning"
+    description="Discover the magic of Disney Cruise Line with our complete guide. Explore the fleet, rotational dining, kids clubs, spacious staterooms, and Disney's private islands. Get your free cruise quote today."
+    canonical="/disney-cruise-line"
+  />
+);

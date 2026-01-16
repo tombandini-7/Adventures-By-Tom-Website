@@ -39,6 +39,15 @@ export const ASSETS = {
     allInclusives: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/All%20Inclusives.jpg',
   },
 
+  // Disney Cruise Line
+  disneyCruiseLine: {
+    heroes: [
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/DCL%20Hero%202.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/DCL%20Hero%20Image.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Disney%20Treasure.jpeg',
+    ],
+  },
+
   // WDW Events
   events: {
     flowerGarden: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Events/Flower%20&%20Garden%20Festival.webp',

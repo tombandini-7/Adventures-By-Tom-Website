@@ -120,6 +120,7 @@ const Destinations = () => {
         'Set sail on an unforgettable voyage where legendary Disney entertainment meets luxury cruising.',
       features: ['Caribbean Voyages', 'Mediterranean', 'Alaska Adventures', 'Private Island'],
       image: ASSETS.cruises.disneyCruiseLine,
+      link: '/disney-cruise-line',
     },
     {
       icon: <Palmtree className="w-6 h-6" />,
