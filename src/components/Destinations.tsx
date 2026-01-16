@@ -199,7 +199,7 @@ const Destinations = () => {
             <DestinationCard
               key={destination.title}
               {...destination}
-              delay={index * 100}
+              delay={(index % 4) * 100}
             />
           ))}
         </div>
