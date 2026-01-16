@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { HomePage, WaltDisneyWorldPage } from './pages';
+import { HomePage, WaltDisneyWorldPage, DisneyCruiseLinePage } from './pages';
 import { useAnalytics } from './hooks/useAnalytics';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/walt-disney-world" element={<WaltDisneyWorldPage />} />
+      <Route path="/disney-cruise-line" element={<DisneyCruiseLinePage />} />
     </Routes>
   );
 }
