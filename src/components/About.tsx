@@ -89,8 +89,8 @@ const About = () => {
             <p className="text-gray-600 leading-relaxed mb-8">
               With years of firsthand experience at Disney destinations worldwide and countless
               cruise voyages, I bring insider expertise that transforms ordinary trips into
-              extraordinary adventures. My services are complimentary — I'm compensated by
-              the travel partners I work with, not by you.
+              extraordinary adventures. My services are complimentary — <strong>I'm compensated by
+              the travel partners I work with, not by you.</strong>
             </p>
 
             {/* Features Grid */}

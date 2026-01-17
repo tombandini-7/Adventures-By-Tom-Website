@@ -1,21 +1,109 @@
+import { useState } from 'react';
 import { useParallax } from '../hooks/useScrollAnimation';
 import { ChevronDown } from 'lucide-react';
 import { QUOTE_URL } from '../constants';
 import { trackQuoteClick } from '../utils/analytics';
+import { ASSETS } from '../constants/assets';
+
+// Hero variants to showcase diverse destinations
+interface HeroVariant {
+  backgroundImage: string;
+  tagline: string;
+  heading: string;
+  headingAccent: string;
+  subtitle: string;
+}
+
+const heroVariants: HeroVariant[] = [
+  // Disney Cruise Line
+  {
+    backgroundImage: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Castaway%20Cay%20-%20DCl%20-%20All%20Characters.webp',
+    tagline: 'Where Your Story Begins',
+    heading: 'Your Journey to',
+    headingAccent: 'Magic',
+    subtitle: 'Stress-free travel planning for Disney, Cruising, and beyond. Where every client feels like the only client.',
+  },
+  {
+    backgroundImage: ASSETS.disneyCruiseLine.heroes[0],
+    tagline: 'Set Sail with Disney',
+    heading: 'Experience the',
+    headingAccent: 'Magic at Sea',
+    subtitle: 'Disney Cruise Line voyages where dreams come alive. Let me handle every detail of your perfect cruise vacation.',
+  },
+  {
+    backgroundImage: ASSETS.disneyCruiseLine.heroes[2],
+    tagline: 'Disney Treasure Awaits',
+    heading: 'Discover Your Next',
+    headingAccent: 'Adventure',
+    subtitle: 'Sail aboard Disney\'s newest ships to breathtaking destinations. Expert planning for unforgettable cruising experiences.',
+  },
+  // Royal Caribbean
+  {
+    backgroundImage: ASSETS.royalCaribbean.heroes[0],
+    tagline: 'Bold Adventures Await',
+    heading: 'Escape to',
+    headingAccent: 'Paradise',
+    subtitle: 'Royal Caribbean\'s world-class ships and private destinations. From Icon Class to Perfect Day at CocoCay - adventure awaits.',
+  },
+  {
+    backgroundImage: ASSETS.royalCaribbean.heroes[2],
+    tagline: 'Your Perfect Day Starts Here',
+    heading: 'Experience',
+    headingAccent: 'Island Bliss',
+    subtitle: 'Exclusive private islands, thrilling activities, and crystal-clear waters. Let me plan your ultimate cruise getaway.',
+  },
+  {
+    backgroundImage: ASSETS.royalCaribbean.heroes[1],
+    tagline: 'The World\'s Largest Ships',
+    heading: 'Sail in',
+    headingAccent: 'Style',
+    subtitle: 'Oasis Class adventures with endless entertainment and dining. Personalized cruise planning for your perfect vacation.',
+  },
+  // Disneyland
+  {
+    backgroundImage: ASSETS.disneyland.heroes[0],
+    tagline: 'The Original Magic',
+    heading: 'Create',
+    headingAccent: 'Memories',
+    subtitle: 'Disneyland Resort magic for the whole family. From park tickets to dining reservations - I\'ve got you covered.',
+  },
+  {
+    backgroundImage: ASSETS.disneyland.heroes[3],
+    tagline: 'California Adventure',
+    heading: 'Experience',
+    headingAccent: 'Adventure',
+    subtitle: 'Two incredible parks, countless memories. Expert Disneyland planning to maximize your magical moments.',
+  },
+  {
+    backgroundImage: ASSETS.disneyland.heroes[4],
+    tagline: 'Where Dreams Come True',
+    heading: 'Your',
+    headingAccent: 'Happiest Place',
+    subtitle: 'Personalized Disneyland experiences tailored just for you. From first-timers to annual passholders.',
+  },
+];
+
+// Get a random hero variant (executed once on component mount)
+const getRandomHeroVariant = (): HeroVariant => {
+  const randomIndex = Math.floor(Math.random() * heroVariants.length);
+  return heroVariants[randomIndex];
+};
 
 const Hero = () => {
   const scrollOffset = useParallax();
+  // Select random hero variant once on mount
+  const [heroVariant] = useState<HeroVariant>(getRandomHeroVariant);
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-[75vh] min-h-[450px] md:h-screen md:min-h-[600px] flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Parallax */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-top md:bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Castaway%20Cay%20-%20DCl%20-%20All%20Characters.webp')`,
+          backgroundImage: `url('${heroVariant.backgroundImage}')`,
           transform: `translateY(${scrollOffset * 0.5}px)`,
         }}
       />
@@ -28,7 +116,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Tagline */}
           <p className="text-yellow uppercase tracking-[0.3em] text-sm font-semibold mb-6 animate-fade-in-down drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            Where Your Story Begins
+            {heroVariant.tagline}
           </p>
 
           {/* Main Heading - All white with yellow accent */}
@@ -36,15 +124,15 @@ const Hero = () => {
             className="font-serif text-4xl md:text-5xl lg:text-7xl font-semibold mb-6 leading-tight animate-fade-in drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
             style={{ color: '#FFFFFF' }}
           >
-            Your Journey to{' '}
-            <span className="text-yellow italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]">Magic</span>
+            {heroVariant.heading}{' '}
+            <span className="text-yellow italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]">{heroVariant.headingAccent}</span>
             <br />
             Begins Here
           </h1>
 
           {/* Subtitle */}
           <p className="text-white text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
-            Stress-free travel planning for Disney, Cruising, and beyond. Where every client feels like the only client.
+            {heroVariant.subtitle}
           </p>
 
           {/* CTA Buttons - White text on both */}
