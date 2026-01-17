@@ -90,6 +90,34 @@ export const ASSETS = {
     halloweenParty: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Events/Mickeys%20Not%20so%20Scary%20Halloween%20Party.jpg',
     christmasParty: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Events/Mickey\'s%20Very%20Merry%20Christmas%20Party.webp',
   },
+
+  // Royal Caribbean
+  royalCaribbean: {
+    heroes: [
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Icon%20Class%20Ships.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Oasis%20Class.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Perfect%20Day%20at%20CocoCay.jpeg',
+    ],
+    shipClasses: {
+      freedom: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Freedom%20Class.jpeg',
+      icon: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Icon%20Class%20Ships.jpeg',
+      oasis: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Oasis%20Class.jpeg',
+      quantum: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Quantum%20Class.jpeg',
+      radiance: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Radiance%20Class.jpeg',
+      vision: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Vision%20Class%202.jpeg',
+      voyager: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Voyager%20Class.jpeg',
+    },
+    privateDestinations: {
+      cocoCay: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Perfect%20Day%20at%20CocoCay.jpeg',
+      perfectDayMexico: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Perfect%20Day%20Mexico.jpeg',
+      cozumel: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Royal%20Beach%20Club%20Cozumel.jpeg',
+      nassau: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Royal%20Beach%20Club%20-%20Nassau.jpeg',
+      labadee: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Labadee.jpeg',
+    },
+    dining: {
+      mainDiningRoom: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Royal%20Caribbean/Main%20Dining%20Room.jpg',
+    },
+  },
 } as const;
 
 // Helper to get destination image by destination name

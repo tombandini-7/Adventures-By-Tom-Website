@@ -69,6 +69,7 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
         { name: 'Walt Disney World', href: '/walt-disney-world', type: 'route' },
         { name: 'Disneyland Resort', href: '/disneyland', type: 'route' },
         { name: 'Disney Cruise Line', href: '/disney-cruise-line', type: 'route' },
+        { name: 'Royal Caribbean', href: '/royal-caribbean', type: 'route' },
         { name: 'All Destinations', href: '/#destinations', type: 'hash' },
       ],
     },

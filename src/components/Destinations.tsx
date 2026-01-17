@@ -146,6 +146,7 @@ const Destinations = () => {
         "Bold adventures on the world's most innovative cruise ships with something for everyone.",
       features: ['Caribbean Islands', 'Perfect Day CocoCay', 'Mediterranean', 'Alaska'],
       image: ASSETS.cruises.royalCaribbean,
+      link: '/royal-caribbean',
     },
     {
       icon: <Ship className="w-6 h-6" />,
