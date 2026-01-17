@@ -112,6 +112,7 @@ const Destinations = () => {
         'Where the Disney magic began. Explore two amazing parks in the heart of Southern California.',
       features: ['Disneyland Park', 'California Adventure', 'Downtown Disney', 'Disney Hotels'],
       image: ASSETS.destinations.disneyland,
+      link: '/disneyland',
     },
     {
       icon: <Ship className="w-6 h-6" />,

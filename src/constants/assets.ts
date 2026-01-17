@@ -48,6 +48,39 @@ export const ASSETS = {
     ],
   },
 
+  // Disneyland Resort
+  disneyland: {
+    heroes: [
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland%203.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland%204.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/DCA.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/DCA%202.jpeg',
+      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/DCA%203.jpeg',
+    ],
+    events: {
+      lunarNewYear: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Lunar%20New%20Year%20Disneyland.jpeg',
+      foodWine: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Food%20&%20Wine%20Disneyland.jpeg',
+      halloweenTime: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Halloween%20Disneyland.jpeg',
+      holidays: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland%20Holidays.jpeg',
+    },
+    resorts: {
+      disneylandHotel: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland%20Hotel.jpeg',
+      grandCalifornian: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/Disneyland\'s%20Grand%20Californian%20Hotel.jpeg',
+      pixarPlace: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disneyland/DIsneyland-Pixar-Place-lobby-1024x667.jpeg',
+    },
+  },
+
+  // Walt Disney World
+  wdw: {
+    resorts: {
+      deluxe: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/app-assets/resorts/resorts/Walt%20Disney%20World/Bay%20Lake%20Tower.jpeg',
+      moderate: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/app-assets/resorts/resorts/Walt%20Disney%20World/Gran%20Destino%20Hotel.jpg',
+      value: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/app-assets/resorts/resorts/Walt%20Disney%20World/Pop%20Century%20Resort.jpg',
+      villas: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/app-assets/resorts/resorts/Walt%20Disney%20World/Villas%20at%20Disney\'s%20Grand%20Floridian%20Resort.jpg',
+    },
+  },
+
   // WDW Events
   events: {
     flowerGarden: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Events/Flower%20&%20Garden%20Festival.webp',

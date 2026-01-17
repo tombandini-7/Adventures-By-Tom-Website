@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Header, Footer, PromoBanner, Contact } from '../components';
 import {
-  WDWHero,
+  DisneylandHero,
   FirstTimeGuide,
   PlanningTimeline,
-  EventsCards,
-  DiningGuides,
+  FestivalsEvents,
   LightningLane,
-  WDWResorts,
-  WDWPromotions,
-} from '../components/wdw';
-import { WaltDisneyWorldPageSEO } from '../components/SEO';
+  DisneylandResorts,
+  DisneylandPromotions,
+} from '../components/disneyland';
+import { DisneylandPageSEO } from '../components/SEO';
 
-const WaltDisneyWorldPage = () => {
+const DisneylandPage = () => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   // Scroll to top on page load
@@ -22,21 +21,20 @@ const WaltDisneyWorldPage = () => {
 
   return (
     <div className="min-h-screen">
-      <WaltDisneyWorldPageSEO />
+      <DisneylandPageSEO />
       <PromoBanner
         isVisible={isBannerVisible}
         onClose={() => setIsBannerVisible(false)}
       />
       <Header hasBanner={isBannerVisible} />
       <main>
-        <WDWHero />
+        <DisneylandHero />
         <FirstTimeGuide />
         <PlanningTimeline />
-        <EventsCards />
-        <DiningGuides />
+        <FestivalsEvents />
         <LightningLane />
-        <WDWResorts />
-        <WDWPromotions />
+        <DisneylandResorts />
+        <DisneylandPromotions />
         <Contact />
       </main>
       <Footer />
@@ -44,4 +42,4 @@ const WaltDisneyWorldPage = () => {
   );
 };
 
-export default WaltDisneyWorldPage;
+export default DisneylandPage;
