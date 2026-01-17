@@ -3,6 +3,12 @@ import { X } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { QUOTE_URL } from '../../constants';
 
+export interface ModalTab {
+  id: string;
+  label: string;
+  icon?: ReactNode;
+}
+
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,12 +18,18 @@ export interface ModalProps {
   badge?: string;
   title: string;
   subtitle?: string;
+  // Tabs (optional - renders below header with white background)
+  tabs?: ModalTab[];
+  activeTab?: string;
+  onTabChange?: (tabId: string) => void;
   // Content
   children: ReactNode;
   // Footer
   ctaText?: string;
   ctaUrl?: string;
   showFooter?: boolean;
+  // Size
+  size?: 'default' | 'wide' | 'full';
 }
 
 export const Modal = ({
@@ -28,11 +40,20 @@ export const Modal = ({
   badge,
   title,
   subtitle,
+  tabs,
+  activeTab,
+  onTabChange,
   children,
   ctaText = 'Get Your Free Quote',
   ctaUrl = QUOTE_URL,
   showFooter = true,
+  size = 'default',
 }: ModalProps) => {
+  const sizeClasses = {
+    default: 'max-w-2xl',
+    wide: 'max-w-4xl',
+    full: 'max-w-6xl',
+  };
   // Handle escape key and body scroll lock
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -60,11 +81,11 @@ export const Modal = ({
 
       {/* Modal */}
       <div
-        className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-hidden animate-fade-in"
+        className={`relative bg-white rounded-2xl shadow-2xl ${sizeClasses[size]} w-full max-h-[85vh] overflow-hidden animate-fade-in`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-ocean via-ocean-light to-aqua-dark p-6 text-white">
+        <div className="bg-gradient-to-r from-ocean via-ocean-light to-aqua-dark p-6 pb-4 text-white">
           <div className="flex items-start justify-between gap-4">
             <div className="flex gap-4">
               {/* Icon */}
@@ -105,6 +126,31 @@ export const Modal = ({
             </button>
           </div>
         </div>
+
+        {/* Tabs - White background, attached to header */}
+        {tabs && tabs.length > 0 && (
+          <div className="bg-white border-b border-gray-200 px-6">
+            <div className="flex">
+              {tabs.map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => onTabChange?.(tab.id)}
+                  className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all relative ${
+                    activeTab === tab.id
+                      ? 'text-ocean'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {tab.icon}
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-ocean rounded-t-full" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[50vh]">

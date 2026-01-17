@@ -105,3 +105,11 @@ export const DisneyCruiseLinePageSEO = (): ReactNode => (
     canonical="/disney-cruise-line"
   />
 );
+
+export const DisneylandPageSEO = (): ReactNode => (
+  <SEO
+    title="Disneyland Resort Planning Guide"
+    description="Your complete guide to planning a Disneyland Resort vacation. Discover Disneyland Park and Disney California Adventure, Lightning Lane tips, seasonal events, and personalized planning from your Disney travel expert."
+    canonical="/disneyland"
+  />
+);
