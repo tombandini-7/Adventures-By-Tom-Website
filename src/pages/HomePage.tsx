@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Header,
   Footer,
@@ -19,6 +19,11 @@ const HomePage = () => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [openPromotionId, setOpenPromotionId] = useState<string | null>(null);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleBannerLearnMore = () => {
     setOpenPromotionId(DCL_PROMO_ID);
   };
@@ -34,12 +39,12 @@ const HomePage = () => {
       <Header hasBanner={isBannerVisible} />
       <main>
         <Hero />
+        <About />
         <Promotions
           openPromotionId={openPromotionId}
           onModalClose={() => setOpenPromotionId(null)}
         />
         <Destinations />
-        <About />
         <Testimonials />
         <Contact />
       </main>

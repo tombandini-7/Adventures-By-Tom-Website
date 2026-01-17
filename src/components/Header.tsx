@@ -69,6 +69,7 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
         { name: 'Walt Disney World', href: '/walt-disney-world', type: 'route' },
         { name: 'Disneyland Resort', href: '/disneyland', type: 'route' },
         { name: 'Disney Cruise Line', href: '/disney-cruise-line', type: 'route' },
+        { name: 'Royal Caribbean', href: '/royal-caribbean', type: 'route' },
         { name: 'All Destinations', href: '/#destinations', type: 'hash' },
       ],
     },
@@ -229,6 +230,13 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
                   <Link
                     key={link.name}
                     to={link.href}
+                    onClick={(e) => {
+                      // Scroll to top if clicking Home while already on homepage
+                      if (link.href === '/' && location.pathname === '/') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className="text-white hover:text-yellow transition-colors text-sm font-medium tracking-wide uppercase"
                   >
                     {link.name}
@@ -342,7 +350,14 @@ const Header = ({ hasBanner = false }: HeaderProps) => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      // Scroll to top if clicking Home while already on homepage
+                      if (link.href === '/' && location.pathname === '/') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className="block text-white hover:text-yellow transition-colors text-base font-medium tracking-wide py-2"
                   >
                     {link.name}
