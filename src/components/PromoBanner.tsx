@@ -1,12 +1,12 @@
 import { X, Ship } from 'lucide-react';
+import { QUOTE_URL } from '../constants';
 
 interface PromoBannerProps {
   isVisible: boolean;
   onClose: () => void;
-  onLearnMore?: () => void;
 }
 
-const PromoBanner = ({ isVisible, onClose, onLearnMore }: PromoBannerProps) => {
+const PromoBanner = ({ isVisible, onClose }: PromoBannerProps) => {
   if (!isVisible) return null;
 
   return (
@@ -15,17 +15,21 @@ const PromoBanner = ({ isVisible, onClose, onLearnMore }: PromoBannerProps) => {
         <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3">
           <Ship className="w-5 h-5 flex-shrink-0 hidden sm:block" />
           <p className="text-center leading-tight sm:leading-normal">
-            <span className="font-semibold">Hurry!</span>{' '}
-            <span className="hidden sm:inline">50% off Disney Cruise Line deposits ends January 18!</span>
-            <span className="sm:hidden">50% off DCL deposits ends Jan 18!</span>{' '}
-            {onLearnMore && (
-              <button
-                onClick={onLearnMore}
-                className="underline font-semibold hover:text-yellow transition-colors"
-              >
-                Learn More
-              </button>
-            )}
+            <a
+              href={QUOTE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow transition-colors"
+            >
+              <span className="hidden sm:inline">
+                <span className="font-semibold">Limited Time!</span> Get FREE onboard credit for booking a cruise until February 15!{' '}
+                <span className="underline font-semibold">Book Now</span>
+              </span>
+              <span className="sm:hidden">
+                <span className="font-semibold">FREE</span> cruise onboard credit until Feb 15!{' '}
+                <span className="underline font-semibold">Book Now</span>
+              </span>
+            </a>
           </p>
         </div>
         <button
