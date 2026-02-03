@@ -58,43 +58,39 @@ const promotions: Promotion[] = [
   {
     id: '2',
     destination: 'Disney Cruise Line',
-    title: 'Half Deposit Cruise Offer',
-    shortDescription: 'Pay only half the deposit when you book an eligible Disney cruise. Set sail to incredible destinations worldwide!',
-    offerText: '50% Deposit',
-    validDates: 'Book by Jan 18, 2026',
+    title: 'Seas the Moment: 20% Off + $250 Credit',
+    shortDescription: 'Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings!',
+    offerText: '20% Off + Credit',
+    validDates: 'Book by Mar 29, 2026',
     bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
     fullDescription: `
 <h2>Offer Details</h2>
-<p>Book an eligible Disney cruise by January 18, 2026, and pay only half of the deposit on the day you make your reservation.</p>
+<p>Seas the moment and plan a magical escape on a Disney Cruise! Guests can embark on select Disney Wish and Disney Dream sailings and enjoy <strong>20% off voyage fare</strong> - plus <strong>$250 onboard credit</strong> to spend during their vacation at sea.</p>
 
-<p>This offer is valid on any new reservation for select Disney cruises departing between <strong>March 2026 and May 2027</strong>, that does not require final payment at time of booking. Remaining balance will be due at time of final payment. Available on all ships except the Disney Adventure.</p>
+<p>This offer is available on select sailings aboard the Disney Wish and Disney Dream between <strong>April and July 2026</strong>.</p>
 
-<p>Embark on a tropical cruise to the Caribbean, The Bahamas or Mexico with fun-filled voyages sailing from Florida, Texas and California—or choose from one of our other itineraries to awe-inspiring locales including Alaska, Europe and beyond.</p>
+<h2>Eligible Sailings</h2>
+<p><em>Availability is subject to change without notice.</em></p>
 
-<h2>Destinations</h2>
+<h3>Disney Wish from Port Canaveral</h3>
+<ul>
+  <li>April 6, 10, 17, 20, 2026</li>
+  <li>May 1, 8, 18, 22, 29, 2026</li>
+  <li>June 1, 5, 12, 15, 19, 26, 29, 2026</li>
+  <li>July 3, 10, 13, 17, 20, 24, 27, 31, 2026</li>
+</ul>
 
-<h3>The Bahamas</h3>
-<p>Chart a course from Port Canaveral or Fort Lauderdale, Florida on an unforgettable Bahamian cruise and discover a tropical world awash with sand and surf—with many including a visit to both Disney island destinations, Disney Castaway Cay and Disney Lookout Cay at Lighthouse Point.</p>
-
-<h3>Caribbean</h3>
-<p>Find paradise on an extended voyage to the sun-kissed Caribbean to destinations including Cozumel, St. Thomas, Jamaica and Grand Cayman. Plus, swim, sunbathe and soak up the fun at one or both of our tropical island retreats, Disney Castaway Cay and Disney Lookout Cay at Lighthouse Point.</p>
-
-<h3>Alaska</h3>
-<p>Discover an untamed wilderness of soaring bald eagles, breaching whales and foraging bears on an Alaskan cruise from Vancouver. As you navigate the Inside Passage, enjoy stops that may include Skagway's historic mining town, Juneau's massive glaciers and Ketchikan's towering totem poles.</p>
-
-<h3>Europe</h3>
-<p>Experience timeless wonders across the Mediterranean and Northern Europe. Your Disney adventure may include marveling at ancient Roman ruins, wandering Barcelona's Gothic Quarter or relishing regional cuisines. From Spanish coasts to Greek isles, Norwegian fjords to the British Isles, vibrant culture and history beckon at every port.</p>
-
-<h3>Baja California & Mexican Riviera</h3>
-<p>Journey along the Baja Peninsula from San Diego, California to Mexico. Sunbathe along white-sand beaches, snorkel amid translucent waters teeming with vibrant sea life and savor the flavor of authentic Mexican cooking at charming open-air restaurants along the way.</p>
+<h3>Disney Dream from Fort Lauderdale</h3>
+<ul>
+  <li>April 10, 13, 17, 24, 27, 2026</li>
+</ul>
 
 <h2>Important Details</h2>
 <ul>
-  <li>Offer valid on new reservations only</li>
-  <li>Must book by January 18, 2026</li>
-  <li>Valid for sailings from March 2026 through May 2027</li>
-  <li>Not available on Disney Adventure sailings</li>
-  <li>Remaining balance due at final payment</li>
+  <li>Must book by March 29, 2026</li>
+  <li>Valid on select Disney Wish and Disney Dream sailings only</li>
+  <li>Sailings depart April through July 2026</li>
+  <li>$250 onboard credit per reservation</li>
   <li>Contact your travel advisor to book</li>
 </ul>`,
   },

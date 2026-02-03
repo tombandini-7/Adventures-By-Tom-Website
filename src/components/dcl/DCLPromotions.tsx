@@ -23,10 +23,10 @@ const dclPromotions: Promotion[] = [
   },
   {
     id: '2',
-    title: 'Only 50% Deposit Due at Time of Booking',
-    shortDescription: 'Book an eligible Disney cruise by January 18, 2026, and pay only half of the deposit on the day you make your reservation.',
-    offerText: '50% Deposit',
-    validDates: 'Book by Jan 18, 2026',
+    title: '20% Off + $250 Onboard Credit',
+    shortDescription: 'Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings from April to July 2026.',
+    offerText: '20% Off + Credit',
+    validDates: 'Book by Mar 29, 2026',
     bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
   },
   {
