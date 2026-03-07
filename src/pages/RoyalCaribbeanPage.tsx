@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import PromoBanner from '../components/PromoBanner';
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
@@ -13,16 +12,13 @@ import {
 } from '../components/royalcaribbean';
 
 const RoyalCaribbeanPage = () => {
-  const [showPromoBanner, setShowPromoBanner] = useState(true);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-white">
-      <PromoBanner isVisible={showPromoBanner} onClose={() => setShowPromoBanner(false)} />
-      <Header hasBanner={showPromoBanner} />
+      <Header />
 
       <main>
         <RCHero />

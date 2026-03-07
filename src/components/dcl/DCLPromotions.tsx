@@ -24,7 +24,7 @@ const dclPromotions: Promotion[] = [
   {
     id: '2',
     title: '20% Off + $250 Onboard Credit',
-    shortDescription: 'Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings from April to July 2026.',
+    shortDescription: 'New dates added for August and September 2026! Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings from April to September 2026.',
     offerText: '20% Off + Credit',
     validDates: 'Book by Mar 29, 2026',
     bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
