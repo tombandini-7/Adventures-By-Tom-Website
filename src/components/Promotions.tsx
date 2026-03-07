@@ -17,57 +17,18 @@ interface Promotion {
 
 const promotions: Promotion[] = [
   {
-    id: '1',
-    destination: 'Walt Disney World',
-    title: '2 Free Nights & Park Days',
-    shortDescription: 'Get 2 free nights and 2 extra park days when you book a 6+ night vacation package.',
-    offerText: '2 Free Nights',
-    validDates: 'May 26 – Sep 15, 2026',
-    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
-    fullDescription: `
-<h2>Offer Details</h2>
-
-<h3>Valid Travel Dates</h3>
-<ul>
-  <li>For arrivals most nights from May 26 to September 15, 2026</li>
-</ul>
-
-<h3>Length-of-Stay Requirements</h3>
-<ul>
-  <li>Minimum – 6 nights (includes the 2 free nights)</li>
-  <li>Maximum – 10 nights (includes the 2 free nights)</li>
-</ul>
-
-<h3>Package Includes</h3>
-<ul>
-  <li>Resort hotel accommodations</li>
-  <li>Theme park tickets</li>
-</ul>
-
-<h2>Important Details</h2>
-<ul>
-  <li>The number of packages allocated for this offer is limited.</li>
-  <li>Everyone in the same room must be on the same package.</li>
-  <li>Theme park tickets are valid for admission beginning on date of check-in and must be used within a limited number of days, depending on length of stay and ticket.</li>
-  <li>Cannot be combined with any other discount or promotion, except for the 2026 Kids Dining Plan Offer.</li>
-  <li>Offer includes 2 extra nights of Resort hotel accommodations and 2 more days added to your theme park tickets.</li>
-  <li>Advance reservations required.</li>
-  <li>Offer excludes: 3-Bedroom Villas; Moderate & Deluxe Resort Suites; Cabins at Copper Creek Villas & Cabins at Disney's Wilderness Lodge; and Bungalows, 1-Bedroom Villas, 2-Bedroom Villas and Penthouses at Disney's Polynesian Villas & Bungalows.</li>
-</ul>`,
-  },
-  {
     id: '2',
     destination: 'Disney Cruise Line',
     title: 'Seas the Moment: 20% Off + $250 Credit',
-    shortDescription: 'Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings!',
+    shortDescription: 'New dates added for August and September 2026! Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings!',
     offerText: '20% Off + Credit',
     validDates: 'Book by Mar 29, 2026',
     bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
     fullDescription: `
 <h2>Offer Details</h2>
-<p>Seas the moment and plan a magical escape on a Disney Cruise! Guests can embark on select Disney Wish and Disney Dream sailings and enjoy <strong>20% off voyage fare</strong> - plus <strong>$250 onboard credit</strong> to spend during their vacation at sea.</p>
+<p>New dates added for August and September 2026! Seas the moment and plan a magical escape on a Disney Cruise! Guests can embark on select Disney Wish and Disney Dream sailings and enjoy <strong>20% off voyage fare</strong> - plus <strong>$250 onboard credit</strong> to spend during their vacation at sea.</p>
 
-<p>This offer is available on select sailings aboard the Disney Wish and Disney Dream between <strong>April and July 2026</strong>.</p>
+<p>This offer is available on select sailings aboard the Disney Wish and Disney Dream between <strong>April and September 2026</strong>.</p>
 
 <h2>Eligible Sailings</h2>
 <p><em>Availability is subject to change without notice.</em></p>
@@ -78,18 +39,21 @@ const promotions: Promotion[] = [
   <li>May 1, 8, 18, 22, 29, 2026</li>
   <li>June 1, 5, 12, 15, 19, 26, 29, 2026</li>
   <li>July 3, 10, 13, 17, 20, 24, 27, 31, 2026</li>
+  <li><strong>NEW!</strong> August 7, 10, 14, 21, 24, 28, 31, 2026</li>
+  <li><strong>NEW!</strong> September 7, 11, 18, 21, 25, 2026</li>
 </ul>
 
 <h3>Disney Dream from Fort Lauderdale</h3>
 <ul>
-  <li>April 10, 13, 17, 24, 27, 2026</li>
+  <li>April 13, 2026</li>
+  <li><em>All other Disney Dream dates are sold out</em></li>
 </ul>
 
 <h2>Important Details</h2>
 <ul>
   <li>Must book by March 29, 2026</li>
   <li>Valid on select Disney Wish and Disney Dream sailings only</li>
-  <li>Sailings depart April through July 2026</li>
+  <li>Sailings depart April through September 2026</li>
   <li>$250 onboard credit per reservation</li>
   <li>Contact your travel advisor to book</li>
 </ul>`,

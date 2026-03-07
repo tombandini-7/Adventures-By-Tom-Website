@@ -14,14 +14,6 @@ interface Promotion {
 // WDW-only promotions - all use Ocean Flow gradient (blue) for WDW consistency
 const wdwPromotions: Promotion[] = [
   {
-    id: '1',
-    title: '2 Free Nights & Park Days',
-    shortDescription: 'Get 2 free nights and 2 extra park days when you book a 6+ night vacation package.',
-    offerText: '2 Free Nights',
-    validDates: 'May 26 – Sep 15, 2026',
-    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
-  },
-  {
     id: '3',
     title: 'FREE Kids Dining Plan',
     shortDescription: 'Get a FREE dining plan for kids (ages 3 to 9) when you purchase a package with dining for adults.',

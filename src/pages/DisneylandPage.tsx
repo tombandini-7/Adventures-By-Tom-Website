@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Header, Footer, PromoBanner, Contact } from '../components';
+import { useEffect } from 'react';
+import { Header, Footer, Contact } from '../components';
 import {
   DisneylandHero,
   FirstTimeGuide,
@@ -12,8 +12,6 @@ import {
 import { DisneylandPageSEO } from '../components/SEO';
 
 const DisneylandPage = () => {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
-
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,11 +20,7 @@ const DisneylandPage = () => {
   return (
     <div className="min-h-screen">
       <DisneylandPageSEO />
-      <PromoBanner
-        isVisible={isBannerVisible}
-        onClose={() => setIsBannerVisible(false)}
-      />
-      <Header hasBanner={isBannerVisible} />
+      <Header />
       <main>
         <DisneylandHero />
         <FirstTimeGuide />
