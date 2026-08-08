@@ -70,7 +70,7 @@ const WDWResorts = () => {
       'Deluxe Resort': 'deluxe',
       'Moderate Resort': 'moderate',
       'Value Resort': 'value',
-      'Campground Resort': 'value', // Use value styling for campground
+      'Campground Resort': 'campground',
     };
     return wdwResortCategories.find(c => c.id === mapping[categoryKey]);
   };
