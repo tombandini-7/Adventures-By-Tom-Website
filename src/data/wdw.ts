@@ -369,6 +369,19 @@ export const wdwResortCategories: WDWResortCategory[] = [
       'Large pools',
     ],
     examples: ['Pop Century', 'Art of Animation', 'All-Star Movies', 'All-Star Music'],
+  },
+  {
+    id: 'campground',
+    name: 'Campground',
+    description: 'Camp amid the magic of the great outdoors at Fort Wilderness—750 acres of pine and cypress forest with woodland trails, spectacular pools and rip-roarin\' nightly entertainment.',
+    image: ASSETS.wdw.resorts.campground,
+    highlights: [
+      'RV, trailer & tent campsites',
+      'Full hookups available',
+      'Woodland trails & recreation',
+      'Boat transport to Magic Kingdom',
+    ],
+    examples: ['The Campsites at Disney\'s Fort Wilderness Resort'],
   }
 ];
 

@@ -78,6 +78,7 @@ export const ASSETS = {
       moderate: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/app-assets/resorts/resorts/Walt%20Disney%20World/Gran%20Destino%20Hotel.jpg',
       value: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/app-assets/resorts/resorts/Walt%20Disney%20World/Pop%20Century%20Resort.jpg',
       villas: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/app-assets/resorts/resorts/Walt%20Disney%20World/Villas%20at%20Disney\'s%20Grand%20Floridian%20Resort.jpg',
+      campground: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/app-assets/resorts/resorts/Walt%20Disney%20World/Campsites%20at%20Disney\'s%20Fort%20Wilderness.jpeg',
     },
   },
 
