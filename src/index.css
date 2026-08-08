@@ -398,6 +398,24 @@ nav a:hover {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
+/* Magical Park Vacations logo crop
+   The source PNG is a 500x500 canvas with the artwork inset at
+   x 91-405, y 89-402. Cropping to that box removes the transparent
+   padding so the logo fills the space it is given. */
+.logo-mpv {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 315 / 314;
+}
+
+.logo-mpv img {
+  display: block;
+  width: 158.73%; /* 500 / 315 */
+  max-width: none;
+  margin-left: -28.889%; /* -91 / 315 */
+  margin-top: -28.254%; /* -89 / 315 */
+}
+
 /* Carousel Styles */
 .carousel-track {
   display: flex;

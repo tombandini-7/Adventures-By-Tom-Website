@@ -2,9 +2,9 @@ import { Bath, Maximize2, Users2, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 const STATEROOM_IMAGES = {
-  main: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Disney%20Treasure%20Verandah%20Stateroom.jpeg',
-  splitBathroom1: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Disney%20Cruise%20Line%20Split%20Bathroom%201.jpeg',
-  splitBathroom2: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/DCL%20Split%20Bathroom%202.jpeg',
+  main: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Disney%20Treasure%20Verandah%20Stateroom.jpeg',
+  splitBathroom1: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Disney%20Cruise%20Line%20Split%20Bathroom%201.jpeg',
+  splitBathroom2: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/DCL%20Split%20Bathroom%202.jpeg',
 };
 
 const stateroomFeatures = [

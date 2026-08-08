@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { useParallax } from '../../hooks/useScrollAnimation';
 import { QUOTE_URL } from '../../constants';
 
-const HERO_IMAGE = 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Walt%20Disney%20World%20Family.jpg';
+const HERO_IMAGE = 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Walt%20Disney%20World%20Family.jpg';
 
 const WDWHero = () => {
   const scrollOffset = useParallax();

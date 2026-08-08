@@ -50,11 +50,12 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="inline-block hover:opacity-80 transition-opacity mb-4"
             >
-              <img
-                src={ASSETS.logos.affiliatedWithMPV}
-                alt="Affiliated with Magical Park Vacations"
-                className="h-50 w-auto mx-auto"
-              />
+              <span className="logo-mpv w-44 mx-auto">
+                <img
+                  src={ASSETS.logos.affiliatedWithMPV}
+                  alt="Magical Park Vacations"
+                />
+              </span>
             </a>
             <p className="text-sky text-sm leading-relaxed max-w-xs mx-auto">
               Let's plan something magical together!
@@ -168,11 +169,12 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="block hover:opacity-80 transition-opacity"
             >
-              <img
-                src={ASSETS.logos.affiliatedWithMPV}
-                alt="Affiliated with Magical Park Vacations"
-                className="h-50 w-auto"
-              />
+              <span className="logo-mpv w-44 mx-auto">
+                <img
+                  src={ASSETS.logos.affiliatedWithMPV}
+                  alt="Magical Park Vacations"
+                />
+              </span>
             </a>
             <p className="text-sky text-sm leading-relaxed">
               Let's plan something magical together!
