@@ -1,61 +1,83 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Castle, Ship, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Castle, Ship, Palmtree, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { getDestinationImage, QUOTE_URL } from '../constants';
 import { Modal } from './common';
 
+type PromotionDestination =
+  | 'Walt Disney World'
+  | 'Disney Cruise Line'
+  | 'Royal Caribbean'
+  | 'Sandals';
+
 interface Promotion {
   id: string;
-  destination: 'Walt Disney World' | 'Disney Cruise Line';
+  destination: PromotionDestination;
   title: string;
   shortDescription: string;
   offerText: string;
+  /** Human-readable dates shown on the card, e.g. "Book by Aug 30, 2026". */
   validDates: string;
+  /**
+   * Last day the offer can be booked, as YYYY-MM-DD. Once this date passes the
+   * promotion stops rendering (see `activePromotions`) so expired offers never
+   * sit on the site. `scripts/check-promotions.mjs` reports on these at build
+   * time. Use null for evergreen offers with no booking deadline.
+   */
+  bookBy: string | null;
   fullDescription: string;
   bgGradient: string;
 }
 
+/** Today at local midnight, so an offer stays live through its final booking day. */
+const startOfToday = (): Date => {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+};
+
+const isPromotionActive = (promotion: Promotion, today = startOfToday()): boolean => {
+  if (!promotion.bookBy) return true;
+  const [year, month, day] = promotion.bookBy.split('-').map(Number);
+  return new Date(year, month - 1, day) >= today;
+};
+
 const promotions: Promotion[] = [
   {
-    id: '2',
+    id: 'dcl-fall-holiday-2026',
     destination: 'Disney Cruise Line',
-    title: 'Seas the Moment: 20% Off + $250 Credit',
-    shortDescription: 'New dates added for August and September 2026! Enjoy 20% off voyage fare plus $250 onboard credit on select Disney Wish and Disney Dream sailings!',
-    offerText: '20% Off + Credit',
-    validDates: 'Book by Mar 29, 2026',
+    title: 'Save Up to $500 Per Guest on Fall & Holiday Sailings',
+    shortDescription: 'Sail through the holidays for less! Save up to $500 per guest on select Disney Treasure, Disney Fantasy and Disney Wonder sailings this October through December.',
+    offerText: 'Up to $500 Off',
+    validDates: 'Book by Aug 30, 2026',
+    bookBy: '2026-08-30',
     bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
     fullDescription: `
 <h2>Offer Details</h2>
-<p>New dates added for August and September 2026! Seas the moment and plan a magical escape on a Disney Cruise! Guests can embark on select Disney Wish and Disney Dream sailings and enjoy <strong>20% off voyage fare</strong> - plus <strong>$250 onboard credit</strong> to spend during their vacation at sea.</p>
+<p>Close out the year at sea. Guests can save <strong>up to $500 USD per guest</strong> on select Disney Cruise Line sailings departing <strong>October 1 through December 31, 2026</strong> - including Halloween on the High Seas and Very Merrytime voyages.</p>
 
-<p>This offer is available on select sailings aboard the Disney Wish and Disney Dream between <strong>April and September 2026</strong>.</p>
-
-<h2>Eligible Sailings</h2>
-<p><em>Availability is subject to change without notice.</em></p>
-
-<h3>Disney Wish from Port Canaveral</h3>
+<h2>Savings by Stateroom</h2>
+<h3>7-Night Sailings</h3>
 <ul>
-  <li>April 6, 10, 17, 20, 2026</li>
-  <li>May 1, 8, 18, 22, 29, 2026</li>
-  <li>June 1, 5, 12, 15, 19, 26, 29, 2026</li>
-  <li>July 3, 10, 13, 17, 20, 24, 27, 31, 2026</li>
-  <li><strong>NEW!</strong> August 7, 10, 14, 21, 24, 28, 31, 2026</li>
-  <li><strong>NEW!</strong> September 7, 11, 18, 21, 25, 2026</li>
+  <li>$500 per guest - Verandah staterooms</li>
+  <li>$400 per guest - Oceanview staterooms</li>
+  <li>$300 per guest - Inside staterooms</li>
 </ul>
 
-<h3>Disney Dream from Fort Lauderdale</h3>
+<h3>3 to 6-Night Sailings</h3>
 <ul>
-  <li>April 13, 2026</li>
-  <li><em>All other Disney Dream dates are sold out</em></li>
+  <li>$250 per guest - Verandah staterooms</li>
+  <li>$200 per guest - Oceanview staterooms</li>
+  <li>$150 per guest - Inside staterooms</li>
 </ul>
 
 <h2>Important Details</h2>
 <ul>
-  <li>Must book by March 29, 2026</li>
-  <li>Valid on select Disney Wish and Disney Dream sailings only</li>
-  <li>Sailings depart April through September 2026</li>
-  <li>$250 onboard credit per reservation</li>
-  <li>Contact your travel advisor to book</li>
+  <li>Must book by August 30, 2026</li>
+  <li>Valid on select Disney Treasure, Disney Fantasy and Disney Wonder sailings</li>
+  <li>Stateroom categories 04A through 11C only - Concierge and Suites are excluded</li>
+  <li>Cannot be combined with other offers; a limited number of staterooms are allocated to this offer</li>
+  <li>Taxes, fees and port expenses are not included</li>
+  <li>Availability is subject to change without notice - reach out and I'll confirm what's open for your dates</li>
 </ul>`,
   },
   {
@@ -64,7 +86,8 @@ const promotions: Promotion[] = [
     title: 'FREE Kids Dining Plan',
     shortDescription: 'Get a FREE dining plan for kids (ages 3 to 9) when you purchase a package with dining for adults.',
     offerText: 'Kids Eat Free',
-    validDates: 'All of 2026',
+    validDates: 'For 2026 arrivals',
+    bookBy: '2026-12-31',
     bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Overview</h2>
@@ -94,52 +117,13 @@ const promotions: Promotion[] = [
 </ul>`,
   },
   {
-    id: '4',
-    destination: 'Walt Disney World',
-    title: 'Save on Spring Packages',
-    shortDescription: 'Save on vacation packages for stays most nights from February to July 2026.',
-    offerText: 'Spring Savings',
-    validDates: 'Feb 22 – Jul 25, 2026',
-    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
-    fullDescription: `
-<h2>Offer Details</h2>
-
-<h3>Valid Travel Dates</h3>
-<ul>
-  <li>For stays most nights from February 22 to July 25, 2026</li>
-  <li>Other savings available for stays most Sunday to Thursday nights from January 4 to February 19, 2026</li>
-</ul>
-
-<h3>Length-of-Stay Requirements</h3>
-<ul>
-  <li>Minimum – 4 nights</li>
-  <li>Maximum – 14 nights</li>
-</ul>
-
-<h3>Package Includes</h3>
-<ul>
-  <li>Resort hotel accommodations</li>
-  <li>Theme park tickets</li>
-</ul>
-
-<h2>Important Details</h2>
-<ul>
-  <li>The number of rooms allocated for this offer is limited.</li>
-  <li>Savings based on the nondiscounted price of the same package.</li>
-  <li>Everyone in the same room must be on the same package.</li>
-  <li>Theme park tickets are valid for admission beginning on date of check-in.</li>
-  <li>Advance reservations required.</li>
-  <li>Cannot be combined with any other discount or promotion, except for the 2026 Kids Dining Plan Offer.</li>
-  <li>This package includes a date-based ticket; theme park reservations are not required for date-based tickets.</li>
-</ul>`,
-  },
-  {
     id: '5',
     destination: 'Walt Disney World',
     title: 'Save Up to 30% on Summer Rooms',
     shortDescription: 'Save up to 30% on rooms at select Disney Resort hotels for stays this summer.',
     offerText: 'Up to 30% Off',
-    validDates: 'May 1 – Oct 4, 2026',
+    validDates: 'Stays through Oct 4, 2026',
+    bookBy: '2026-10-04',
     bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
@@ -168,81 +152,88 @@ const promotions: Promotion[] = [
 </ul>`,
   },
   {
-    id: '6',
-    destination: 'Walt Disney World',
-    title: 'Florida Resident Summer Offer',
-    shortDescription: 'Special room rates for Florida residents at select Disney Resort hotels.',
-    offerText: 'FL Residents',
-    validDates: 'May 1 – Jul 29, 2026',
+    id: 'rccl-kids-teens-sail-free-2026',
+    destination: 'Royal Caribbean',
+    title: 'Kids & Teens Sail Free',
+    shortDescription: 'For the first time ever, teens sail free too! Third and fourth guests sail free on select Royal Caribbean sailings - now including Alaska and Europe.',
+    offerText: 'Kids & Teens Free',
+    validDates: 'Book by Sep 14, 2026',
+    bookBy: '2026-09-14',
     bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
     fullDescription: `
 <h2>Offer Details</h2>
+<p>Royal Caribbean has expanded its Kids Sail Free offer to include <strong>teens for the first time</strong>. Third and fourth guests sharing a stateroom with two full-fare-paying adults receive <strong>free cruise fare</strong> on select sailings - and Alaska and Europe itineraries are now included.</p>
 
-<h3>Eligibility</h3>
+<h2>Booking &amp; Sailing Windows</h2>
 <ul>
-  <li>Proof of Florida residency required at check-in</li>
-</ul>
-
-<h3>Valid Travel Dates</h3>
-<ul>
-  <li>Most nights from May 1 to July 29, 2026</li>
-</ul>
-
-<h3>Length-of-Stay Requirements</h3>
-<ul>
-  <li>Minimum – 1 night</li>
-  <li>Maximum – 14 nights</li>
+  <li>Book between July 31 and <strong>September 14, 2026</strong></li>
+  <li>Valid on select sailings departing <strong>August 26, 2026 through August 20, 2027</strong></li>
 </ul>
 
 <h2>Important Details</h2>
 <ul>
-  <li>The number of rooms allocated for this offer is limited.</li>
-  <li>Savings based on the nondiscounted price a non-Florida resident pays for the same room.</li>
-  <li>Additional per-adult charges may apply if more than 2 adults per room.</li>
-  <li>Cannot be combined with any other discount or promotion, except for the 2026 Kids Dining Plan Offer.</li>
-  <li>Must be consecutive-night stays.</li>
-  <li>Valid admission is required to enjoy the theme parks and is not included in this offer.</li>
+  <li>Requires two full-fare-paying adults in the stateroom - bookings with a single paying adult do not qualify</li>
+  <li>Covers cruise fare only; taxes, fees, port expenses and gratuities are not included</li>
+  <li>Blackout dates apply, including Thanksgiving, Christmas and spring break sailings</li>
+  <li>Available to residents of the U.S., Canada, Puerto Rico and select Caribbean countries</li>
+  <li>Offer applies to select sailings and is capacity controlled - let's check your dates before they fill</li>
 </ul>`,
   },
   {
-    id: '7',
-    destination: 'Walt Disney World',
-    title: 'Passholder Summer Savings',
-    shortDescription: 'Annual Passholders save up to 40% on rooms at select Disney Resort hotels this summer.',
-    offerText: 'Up to 40% Off',
-    validDates: 'May 1 – Jul 29, 2026',
-    bgGradient: 'from-ocean via-ocean-light to-aqua-dark',
+    id: 'sandals-summer-loving-2026',
+    destination: 'Sandals',
+    title: 'Summer Loving: Up to $1,500 Credit + Free Night',
+    shortDescription: 'Adults-only luxury in the Caribbean - up to $1,500 in instant credits plus a free night, spa credit and air credit on qualifying stays.',
+    offerText: 'Up to $1,500 Credit',
+    validDates: 'Book by Aug 24, 2026',
+    bookBy: '2026-08-24',
+    bgGradient: 'from-magenta-dark via-magenta to-magenta-light',
     fullDescription: `
 <h2>Offer Details</h2>
-
-<h3>Eligibility</h3>
+<p>Sandals' Summer Loving offer stacks several perks on qualifying all-inclusive stays:</p>
 <ul>
-  <li>Passholder must present a valid Walt Disney World Annual Pass at check-in</li>
+  <li><strong>Up to $1,500 instant credit</strong> toward your stay</li>
+  <li><strong>One free night</strong> on qualifying stays</li>
+  <li><strong>$150 spa credit</strong></li>
+  <li><strong>Up to $750 air credit</strong></li>
 </ul>
 
-<h3>Valid Travel Dates</h3>
+<h2>Booking &amp; Travel Windows</h2>
 <ul>
-  <li>Most nights from May 1 to July 29, 2026</li>
-</ul>
-
-<h3>Length of Stay Requirements</h3>
-<ul>
-  <li>Minimum – 1 night</li>
-  <li>Maximum – 14 nights</li>
+  <li>Book by <strong>August 24, 2026</strong></li>
+  <li>Valid for travel <strong>August 4, 2026 through December 25, 2027</strong></li>
 </ul>
 
 <h2>Important Details</h2>
 <ul>
-  <li>The number of rooms allocated for this offer is limited.</li>
-  <li>Savings based on the nondiscounted price a non-Passholder pays for the same room.</li>
-  <li>Additional per-adult charges may apply if more than 2 adults per room.</li>
-  <li>Cannot be combined with any other discount or promotion, except for the 2026 Kids Dining Plan Offer.</li>
-  <li>Advance reservations required.</li>
-  <li>Must be consecutive-night stays.</li>
-  <li>To enter a theme park, each Passholder must have valid admission and may need a theme park reservation.</li>
+  <li>Instant credits are in USD and apply to the room value only (land portion)</li>
+  <li>Credit amounts vary by resort, room category and length of stay</li>
+  <li>Free-night and air-credit perks require a qualifying minimum stay</li>
+  <li>Combinable with other Sandals consumer savings promotions</li>
+  <li>Terms vary by resort - reach out and I'll price out the combination that saves you the most</li>
 </ul>`,
   },
 ];
+
+/**
+ * Only promotions whose booking deadline has not passed. Everything downstream
+ * (carousel, dots, deep links) uses this, so an expired offer disappears on its
+ * own without anyone having to remember to pull it.
+ */
+const activePromotions = promotions.filter((promotion) => isPromotionActive(promotion));
+
+/** Icon per brand. Colour is applied directly to the icon - no background shapes. */
+const destinationIcon = (destination: PromotionDestination, className: string) => {
+  switch (destination) {
+    case 'Disney Cruise Line':
+    case 'Royal Caribbean':
+      return <Ship className={className} />;
+    case 'Sandals':
+      return <Palmtree className={className} />;
+    default:
+      return <Castle className={className} />;
+  }
+};
 
 // Modal Component using reusable Modal
 const PromotionModal = ({
@@ -260,13 +251,7 @@ const PromotionModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      icon={
-        promotion.destination === 'Disney Cruise Line' ? (
-          <Ship className="w-7 h-7" />
-        ) : (
-          <Castle className="w-7 h-7" />
-        )
-      }
+      icon={destinationIcon(promotion.destination, 'w-7 h-7')}
       label={promotion.destination}
       badge={promotion.offerText}
       title={promotion.title}
@@ -293,11 +278,11 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % promotions.length);
+    setCurrentSlide((prev) => (prev + 1) % activePromotions.length);
   }, []);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + promotions.length) % promotions.length);
+    setCurrentSlide((prev) => (prev - 1 + activePromotions.length) % activePromotions.length);
   }, []);
 
   const goToSlide = useCallback((index: number) => {
@@ -318,7 +303,7 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
   // Open modal when openPromotionId is set externally
   useEffect(() => {
     if (openPromotionId) {
-      const promo = promotions.find((p) => p.id === openPromotionId);
+      const promo = activePromotions.find((p) => p.id === openPromotionId);
       if (promo) {
         openModal(promo);
       }
@@ -335,6 +320,9 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
 
     return () => clearInterval(interval);
   }, [isPaused, isModalOpen, nextSlide]);
+
+  // Every offer has expired - hide the section rather than render an empty carousel.
+  if (activePromotions.length === 0) return null;
 
   return (
     <>
@@ -362,7 +350,7 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
                 className="carousel-track"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                {promotions.map((promo) => (
+                {activePromotions.map((promo) => (
                   <div
                     key={promo.id}
                     className="carousel-slide min-w-full flex flex-col md:flex-row"
@@ -434,7 +422,7 @@ const Promotions = ({ openPromotionId, onModalClose }: PromotionsProps) => {
             </button>
 
             <div className="flex gap-2">
-              {promotions.map((_, index) => (
+              {activePromotions.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}

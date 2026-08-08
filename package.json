@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:promos": "node scripts/check-promotions.mjs",
+    "prebuild": "node scripts/check-promotions.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
