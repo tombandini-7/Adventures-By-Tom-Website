@@ -135,6 +135,10 @@ export const getDestinationImage = (destination: string): string => {
       return ASSETS.destinations.aulani;
     case 'Universal Orlando':
       return ASSETS.destinations.universalOrlando;
+    case 'Royal Caribbean':
+      return ASSETS.cruises.royalCaribbean;
+    case 'Sandals':
+      return ASSETS.destinations.allInclusives;
     default:
       return ASSETS.destinations.waltDisneyWorld;
   }
