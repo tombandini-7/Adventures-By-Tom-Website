@@ -24,9 +24,9 @@ const islands: IslandInfo[] = [
       'Bike & boat rentals available',
     ],
     images: [
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%201.jpeg',
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%202.jpeg',
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%20-%20Serenity%20Bay.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%201.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%202.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Castaway%20Cay%20-%20Serenity%20Bay.jpeg',
     ],
   },
   {
@@ -42,9 +42,9 @@ const islands: IslandInfo[] = [
       'Signature lighthouse landmark',
     ],
     images: [
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/2025-dcl-lookout-cay.jpeg',
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/DCL%20Lookout%20Cay%20Splash%20Pad.jpeg',
-      'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Lookout%20Cay%20-%20Magic%20-%20Pier.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/2025-dcl-lookout-cay.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/DCL%20Lookout%20Cay%20Splash%20Pad.jpeg',
+      'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Private%20Islands/Lookout%20Cay%20-%20Magic%20-%20Pier.jpeg',
     ],
   },
 ];

@@ -15,7 +15,7 @@ interface SEOProps {
 // Site-wide constants
 const SITE_NAME = 'Adventures By Tom';
 const SITE_URL = 'https://adventuresbytom.com';
-const DEFAULT_IMAGE = 'https://nwsyyhirelhlkbqpxsaa.supabase.co/storage/v1/object/public/images/logo/Adventures%20by%20Tom%20Logo%20-%20Light%20Blue.webp';
+const DEFAULT_IMAGE = 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/social/Adventures%20by%20Tom%20-%20Social%20Share.jpg';
 
 // Structured data for the business
 const businessStructuredData = {

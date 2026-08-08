@@ -17,7 +17,7 @@ interface HeroVariant {
 const heroVariants: HeroVariant[] = [
   // Disney Cruise Line
   {
-    backgroundImage: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Castaway%20Cay%20-%20DCl%20-%20All%20Characters.webp',
+    backgroundImage: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Castaway%20Cay%20-%20DCl%20-%20All%20Characters.webp',
     tagline: 'Where Your Story Begins',
     heading: 'Your Journey to',
     headingAccent: 'Magic',

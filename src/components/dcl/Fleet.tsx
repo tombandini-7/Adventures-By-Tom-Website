@@ -17,7 +17,7 @@ const ships: ShipInfo[] = [
     year: 2026,
     description: 'Coming to Singapore, this ship brings Disney magic to Asia with seven themed zones and unique experiences.',
     highlight: 'Asia Home Port',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Adventure.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Adventure.jpeg',
     isNew: true,
   },
   {
@@ -25,7 +25,7 @@ const ships: ShipInfo[] = [
     year: 2025,
     description: 'The newest addition to the fleet, featuring immersive Disney storytelling and the latest onboard innovations.',
     highlight: 'Heroes & Villains Theme',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Destiny%20Atrium.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Destiny%20Atrium.jpeg',
     isNew: true,
   },
   {
@@ -33,7 +33,7 @@ const ships: ShipInfo[] = [
     year: 2024,
     description: 'Inspired by the adventures of beloved Disney characters, featuring stunning design and world-class entertainment.',
     highlight: 'Adventure-Themed Design',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Treasure%20Atrium.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Treasure%20Atrium.jpeg',
     isNew: true,
   },
   {
@@ -41,35 +41,35 @@ const ships: ShipInfo[] = [
     year: 2022,
     description: 'A stunning ship with enchanting experiences including AquaMouse, the first Disney attraction at sea.',
     highlight: 'AquaMouse Attraction',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Wish%20Atrium.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Wish%20Atrium.jpeg',
   },
   {
     name: 'Disney Fantasy',
     year: 2012,
     description: 'Sister ship to the Dream, offering unique dining venues and the spectacular Animator\'s Palate experience.',
     highlight: 'Animator\'s Palate',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Fantasy%20Waterslide.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Fantasy%20Waterslide.jpeg',
   },
   {
     name: 'Disney Dream',
     year: 2011,
     description: 'An elegant vessel featuring AquaDuck, the first-ever shipboard water coaster, and magical Broadway-style shows.',
     highlight: 'AquaDuck Water Coaster',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Dream.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Dream.jpeg',
   },
   {
     name: 'Disney Wonder',
     year: 1999,
     description: 'Classic Disney cruising with intimate spaces, perfect for Alaska and Mexico sailings.',
     highlight: 'Tiana\'s Place Restaurant',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Wonder.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Wonder.jpeg',
   },
   {
     name: 'Disney Magic',
     year: 1998,
     description: 'The ship that started it all, recently refurbished with modern amenities while maintaining its classic charm.',
     highlight: 'Rapunzel\'s Royal Table',
-    image: 'https://mctzomkzqzywhophhpdr.supabase.co/storage/v1/object/public/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Magic.jpeg',
+    image: 'https://ysxkvjimngygmlmnnvwm.supabase.co/storage/v1/object/public/website-assets/Magical%20Park%20Vacations/Destinations/Disney%20Cruise%20Line/Fleet/Disney%20Magic.jpeg',
   },
 ];
 
